@@ -1,6 +1,6 @@
-import React, { useEffect, useRef, useState } from "react";
-import styles from "../css/video.module.css";
-import { db } from "../firebase/config";
+import React, { useEffect, useRef, useState } from 'react';
+import styles from '../css/video.module.css';
+import { db } from '../firebase/config';
 import {
   collection,
   getDoc,
@@ -9,18 +9,18 @@ import {
   setDoc,
   onSnapshot,
   updateDoc,
-} from "firebase/firestore";
-import checkLoggedIn from "../hooks/checkLoggedIn";
-import { motion } from "framer-motion";
+} from 'firebase/firestore';
+import checkLoggedIn from '../hooks/checkLoggedIn';
+import { motion } from 'framer-motion';
 
 import {
   BsFillCameraVideoFill,
   BsFillCameraVideoOffFill,
-} from "react-icons/bs";
-import { FaUserPlus } from "react-icons/fa";
-import { MdScreenShare } from "react-icons/md";
-import { RxExit } from "react-icons/rx";
-import { useRouter } from "next/router";
+} from 'react-icons/bs';
+import { FaUserPlus } from 'react-icons/fa';
+import { MdScreenShare } from 'react-icons/md';
+import { RxExit } from 'react-icons/rx';
+import { useRouter } from 'next/router';
 
 const buttonVariants = {
   hover: {
@@ -48,8 +48,8 @@ export default function Video() {
     iceServers: [
       {
         urls: [
-          "stun:stun1.l.google.com:19302",
-          "stun:stun2.l.google.com:19302",
+          'stun:stun1.l.google.com:19302',
+          'stun:stun2.l.google.com:19302',
         ],
       },
     ],
@@ -89,9 +89,9 @@ export default function Video() {
   const createCall = async (e) => {
     e.preventDefault();
 
-    const callDoc = doc(collection(db, "calls"));
-    const offerCandidates = collection(callDoc, "offerCandidates");
-    const answerCandidates = collection(callDoc, "answerCandidates");
+    const callDoc = doc(collection(db, 'calls'));
+    const offerCandidates = collection(callDoc, 'offerCandidates');
+    const answerCandidates = collection(callDoc, 'answerCandidates');
 
     setRoomId(callDoc.id);
 
@@ -119,7 +119,7 @@ export default function Video() {
 
     onSnapshot(answerCandidates, (snapshot) => {
       snapshot.docChanges().forEach((change) => {
-        if (change.type === "added") {
+        if (change.type === 'added') {
           const candidate = new RTCIceCandidate(change.doc.data());
           peerConnection.current.addIceCandidate(candidate);
         }
@@ -134,9 +134,9 @@ export default function Video() {
   const answerCall = async (e) => {
     e.preventDefault();
     const callId = roomIdInput.current.value;
-    const callDoc = doc(collection(db, "calls"), callId);
-    const offerCandidates = collection(callDoc, "offerCandidates");
-    const answerCandidates = collection(callDoc, "answerCandidates");
+    const callDoc = doc(collection(db, 'calls'), callId);
+    const offerCandidates = collection(callDoc, 'offerCandidates');
+    const answerCandidates = collection(callDoc, 'answerCandidates');
 
     peerConnection.current.onicecandidate = (event) => {
       event.candidate && addDoc(answerCandidates, event.candidate.toJSON());
@@ -160,7 +160,7 @@ export default function Video() {
 
     onSnapshot(offerCandidates, (snapshot) => {
       snapshot.docChanges().forEach((change) => {
-        if (change.type === "added") {
+        if (change.type === 'added') {
           const candidate = new RTCIceCandidate(change.doc.data());
           peerConnection.current.addIceCandidate(candidate);
         }
@@ -188,7 +188,7 @@ export default function Video() {
     const sender = peerConnection.current.getSenders()[1];
     const displayMediaOptions = {
       video: {
-        displaySurface: "window",
+        displaySurface: 'window',
       },
       audio: false,
     };
@@ -223,6 +223,7 @@ export default function Video() {
         <video
           autoPlay
           playsInline
+          controls={isRoomCreated}
           className={styles.remoteUser}
           ref={remoteUser}
         ></video>
@@ -286,7 +287,7 @@ export default function Video() {
             id="call-id-input"
             type="text"
             defaultValue={roomId}
-            placeholder={"Add your invite code"}
+            placeholder={'Add your invite code'}
             ref={roomIdInput}
             className={styles.input}
           />
