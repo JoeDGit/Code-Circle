@@ -224,7 +224,6 @@ export default function Video() {
           controls={isRoomCreated}
           autoPlay
           playsInline
-          controls={isRoomCreated}
           className={styles.remoteUser}
           ref={remoteUser}
         ></video>
