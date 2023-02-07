@@ -1,12 +1,12 @@
-import { useState } from "react";
-import { useSignin } from "../hooks/useSignin";
-import { useRouter } from "next/router";
-import styles from "../css/login.module.css";
-import logo from "../images/Logo_Icon.svg";
-import Image from "next/image";
+import { useState } from 'react';
+import { useSignin } from '../hooks/useSignin';
+import { useRouter } from 'next/router';
+import styles from '../css/login.module.css';
+import logo from '../images/Logo_Icon.svg';
+import Image from 'next/image';
 
-import { motion } from "framer-motion";
-import Link from "next/link";
+import { motion } from 'framer-motion';
+import Link from 'next/link';
 
 const buttonVariants = {
   hover: {
@@ -18,13 +18,13 @@ const buttonVariants = {
 };
 
 export default function LoginForm() {
-  const [emailInput, setEmailInput] = useState("");
-  const [passwordInput, setPasswordInput] = useState("");
+  const [emailInput, setEmailInput] = useState('');
+  const [passwordInput, setPasswordInput] = useState('');
   const { signin, error } = useSignin();
 
   let router = useRouter();
   function redirect() {
-    router.push("/home");
+    router.push('/home');
   }
 
   const handleSubmit = async (e) => {
@@ -40,7 +40,7 @@ export default function LoginForm() {
           alt="logo"
           src={logo}
           onClick={() => {
-            router.push("/");
+            router.push('/');
           }}
         />
 
@@ -50,6 +50,7 @@ export default function LoginForm() {
       <div>
         <form onSubmit={handleSubmit} className={styles.formContainer}>
           <input
+            autoComplete="email"
             className={styles.inputStyle}
             type="text"
             placeholder="Enter your email"
@@ -60,6 +61,7 @@ export default function LoginForm() {
           />
 
           <input
+            autoComplete="current-password"
             className={styles.inputStyle}
             type="password"
             placeholder="Enter your password"
@@ -80,7 +82,7 @@ export default function LoginForm() {
             Login
           </motion.button>
           <div>
-            {`Don't have an account?`}{" "}
+            {`Don't have an account?`}{' '}
             <Link className={styles.forgotPassword} href="/create-an-account">
               Sign Up
             </Link>
