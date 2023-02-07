@@ -1,8 +1,18 @@
-import React from "react";
-import styles from "../css/postReplies.module.css";
-import moment from "moment";
-import { useAuthContext } from "../hooks/useAuthContext";
-import { useRouter } from "next/router";
+import React from 'react';
+import styles from '../css/postReplies.module.css';
+import moment from 'moment';
+import { useAuthContext } from '../hooks/useAuthContext';
+import { useRouter } from 'next/router';
+import { motion } from 'framer-motion';
+
+const buttonVariants = {
+  hover: {
+    scale: 1.06,
+  },
+  tap: {
+    scale: 0.99,
+  },
+};
 
 export default function PostReplies({ pid, replies, handleDeleteReply }) {
   const { user } = useAuthContext();
@@ -41,12 +51,18 @@ export default function PostReplies({ pid, replies, handleDeleteReply }) {
                 </div>
                 <div className={styles.replyContainer}>
                   <div className={styles.reply}>{reply.message}</div>
-                  {reply?.user === user?.displayName ? (
-                    <button onClick={() => handleDeleteReply(reply.replyId)}>
-                      Delete
-                    </button>
-                  ) : null}
                 </div>
+                {reply?.user === user?.displayName ? (
+                  <motion.button
+                    variants={buttonVariants}
+                    whileHover="hover"
+                    whileTap="tap"
+                    className={styles.deleteButton}
+                    onClick={() => handleDeleteReply(reply.replyId)}
+                  >
+                    Delete
+                  </motion.button>
+                ) : null}
               </div>
             </div>
           </div>
