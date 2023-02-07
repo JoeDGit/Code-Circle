@@ -1,10 +1,14 @@
-import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
-import { auth, storage } from "../firebase/config";
-import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
-import { useEffect, useState } from "react";
-import { useAuthContext } from "./useAuthContext";
+import {
+  createUserWithEmailAndPassword,
+  updateProfile,
+  getAuth,
+} from 'firebase/auth';
+import { storage } from '../firebase/config';
+import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
+import { useEffect, useState } from 'react';
+import { useAuthContext } from './useAuthContext';
 
-
+const auth = getAuth();
 export const useSignup = () => {
   const [isCancelled, setIsCancelled] = useState(false);
   const [error, setError] = useState(null);
@@ -20,20 +24,19 @@ export const useSignup = () => {
       const res = await createUserWithEmailAndPassword(auth, email, password);
 
       if (!res) {
-        throw new Error("Could not complete signup");
+        throw new Error('Could not complete signup');
       }
       //add display name to firebase user
       const uploadPath = `thumbnails/${res.user.uid}/${thumbnail.name}`;
       const thumbnailRef = ref(storage, uploadPath);
-      await uploadBytes(thumbnailRef, thumbnail)
-     
+      await uploadBytes(thumbnailRef, thumbnail);
+
       const photoURL = await getDownloadURL(thumbnailRef);
-     
- 
-      await updateProfile(res.user, { displayName, photoURL});
+
+      await updateProfile(res.user, { displayName, photoURL });
 
       // dispatch login action
-      dispatch({ type: "LOGIN", payload: res.user });
+      dispatch({ type: 'LOGIN', payload: res.user });
 
       if (!isCancelled) {
         setIsPending(false);

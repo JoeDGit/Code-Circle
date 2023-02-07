@@ -1,12 +1,11 @@
-import React from "react";
-import styles from "../css/profilePagePostCard.module.css";
-import imagePlaceholder from "../images/image-placeholder.svg";
-import Image from "next/image";
-import profilePlaceholder from "../images/profilePlaceholder.png";
-import deleteAPost from "../hooks/deleteAPost";
-import editAPost from "../hooks/editAPost";
-import { useRouter } from "next/router";
-import { useState } from "react";
+import React from 'react';
+import styles from '../css/profilePagePostCard.module.css';
+import Image from 'next/image';
+import profilePlaceholder from '../images/profilePlaceholder.png';
+import deleteAPost from '../hooks/deleteAPost';
+import editAPost from '../hooks/editAPost';
+import { useRouter } from 'next/router';
+import { useState } from 'react';
 
 export default function ProfilePagePostCard({ props, userName }) {
   const {
@@ -21,8 +20,8 @@ export default function ProfilePagePostCard({ props, userName }) {
     photoURL,
   } = props;
   const date = new Date(postTime);
-  const readableDate = date.toLocaleDateString("en-GB");
-  const readableTime = date.toLocaleTimeString("en-GB").slice(0, 5);
+  const readableDate = date.toLocaleDateString('en-GB');
+  const readableTime = date.toLocaleTimeString('en-GB').slice(0, 5);
 
   const [isPostBeingEdited, setIsPostBeingEdited] = useState(false);
   const [editProjectDescription, setEditProjectDescription] =
@@ -83,103 +82,98 @@ export default function ProfilePagePostCard({ props, userName }) {
     <div className={styles.profileCardContainer}>
       <div className={styles.title}>{postTitle}</div>
 
-
- <div className={styles.postInfo}>
-      {isPostBeingEdited ? (
-        <label>
-          Update programming language:
-          <select name="programming-languages" onChange={OnChangeEditLanguage}>
-            <option value="HTML">HTML</option>
-            <option value="CSS">CSS</option>
-            <option value="JavaScript">JavaScript</option>
-            <option value="Java">Java</option>
-            <option value="PHP">PHP</option>
-            <option value="C#">C#</option>
-            <option value="Python">Python</option>
-            <option value="Go">Go</option>
-            <option value="Swift">Swift</option>
-            <option value="Ruby">Ruby</option>
-          </select>
-        </label>
-      ) : (
-        <div>Language: {editProgrammingLanguage}</div>
-      )}
-
-      <br />
-
-      {isPostBeingEdited ? (
-        <label>
-          Choose a time to code :
-          <input
-            type="datetime-local"
-            name="meeting-time"
-            onChange={onChangeTimeToCode}
-          />
-        </label>
-      ) : (
-        <div>Time to code: {editTimeToCode.replace("T", " ")}</div>
-      )}
-
-      <br />
-
-      {isPostBeingEdited ? (
-        <label>
-          Choose a time zone :
-          <select name="Time-zone" onChange={OnChangeTimeZone}>
-            <option value="GMT">GMT</option>
-            <option value="UTC">UTC</option>
-            <option value="PST">PST</option>
-            <option value="UTC">UTC</option>
-            <option value="ET">ET</option>
-            <option value="CT">CT</option>
-            <option value="PT">PT</option>
-          </select>
-        </label>
-      ) : (
-        <div>Time zone:{editTimeZone}</div>
-      )}
-
-      {isPostBeingEdited ? <div>Enter new project description:</div> : null}
-      {isPostBeingEdited ? (
-        <textarea
-        className={styles.textarea}
-          name="edit-project-description"
-          onChange={onChangeEditProjectDescription}
-          placeholder={editProjectDescription}
-        ></textarea>
-      ) : (
-        <div>{projectDescription}</div>
-      )}
-      <Image src={imagePlaceholder} alt="placeholder" className={styles.image} />
-       <div className={styles.buttons}>
-        {isPostBeingEdited
-          ? <button onClick={handleCancelEditPost} className={styles.button}>Cancel Editing</button>
-          : <button onClick={handleEditPost} className={styles.button}>Edit Post</button>}
-        {isPostBeingEdited
-          ? <button onClick={handleUpdatePost} className={styles.button}>Update Post</button>
-          : null}
-        <button onClick={handleDeletePost} className={styles.button}>Delete Post</button>
-      </div>
-
-
-      <div className={styles.authorAndPostTimeContainer}>
-        {photoURL ? (
-          /* eslint-disable-next-line @next/next/no-img-element */
-          <img src={photoURL} alt="profile " className={styles.profileImage} />
+      <div className={styles.postInfo}>
+        {isPostBeingEdited ? (
+          <label>
+            Update programming language:
+            <select
+              name="programming-languages"
+              onChange={OnChangeEditLanguage}
+            >
+              <option value="HTML">HTML</option>
+              <option value="CSS">CSS</option>
+              <option value="JavaScript">JavaScript</option>
+              <option value="Java">Java</option>
+              <option value="PHP">PHP</option>
+              <option value="C#">C#</option>
+              <option value="Python">Python</option>
+              <option value="Go">Go</option>
+              <option value="Swift">Swift</option>
+              <option value="Ruby">Ruby</option>
+            </select>
+          </label>
         ) : (
-          <Image
-            src={profilePlaceholder}
-            alt="profile"
-            className={styles.profileImage}
-          />
+          <div>Language: {editProgrammingLanguage}</div>
         )}
 
-        <div>Posted by: {user}</div>
+        <br />
+
+        {isPostBeingEdited ? (
+          <label>
+            Choose a time to code :
+            <input
+              type="datetime-local"
+              name="meeting-time"
+              onChange={onChangeTimeToCode}
+            />
+          </label>
+        ) : (
+          <div>Time to code: {editTimeToCode.replace('T', ' ')}</div>
+        )}
+
+        <br />
+
+        {isPostBeingEdited ? (
+          <label>
+            Choose a time zone :
+            <select name="Time-zone" onChange={OnChangeTimeZone}>
+              <option value="GMT">GMT</option>
+              <option value="UTC">UTC</option>
+              <option value="PST">PST</option>
+              <option value="UTC">UTC</option>
+              <option value="ET">ET</option>
+              <option value="CT">CT</option>
+              <option value="PT">PT</option>
+            </select>
+          </label>
+        ) : (
+          <div>Time zone:{editTimeZone}</div>
+        )}
+
+        {isPostBeingEdited ? <div>Enter new project description:</div> : null}
+        {isPostBeingEdited ? (
+          <textarea
+            className={styles.textarea}
+            name="edit-project-description"
+            onChange={onChangeEditProjectDescription}
+            placeholder={editProjectDescription}
+          ></textarea>
+        ) : (
+          <div>{projectDescription}</div>
+        )}
         <div>
-          Created: {readableDate} at {readableTime}{" "}
+          Created: {readableDate} at {readableTime}{' '}
+        </div>
+        <div className={styles.buttons}>
+          {isPostBeingEdited ? (
+            <button onClick={handleCancelEditPost} className={styles.button}>
+              Cancel Editing
+            </button>
+          ) : (
+            <button onClick={handleEditPost} className={styles.button}>
+              Edit Post
+            </button>
+          )}
+          {isPostBeingEdited ? (
+            <button onClick={handleUpdatePost} className={styles.button}>
+              Update Post
+            </button>
+          ) : null}
+          <button onClick={handleDeletePost} className={styles.button}>
+            Delete Post
+          </button>
         </div>
       </div>
-      </div>  
     </div>
   );
 }

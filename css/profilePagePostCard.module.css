@@ -15,7 +15,6 @@
   display: flex;
   font-size: 0.8em;
   gap: 0.5em;
-  justify-content: flex-end;
 }
 
 .title {
@@ -28,20 +27,18 @@
   font-weight: 300;
 }
 
-
-.profileImage{
+.profileImage {
   width: 60px;
   height: 60px;
   border-radius: 50%;
   object-fit: cover;
 }
 
-.image{
+.image {
   width: 250px;
   height: 250px;
   object-fit: cover;
 }
- 
 
 .buttons {
   display: flex;
@@ -50,9 +47,8 @@
 }
 
 .button {
-  height: 64px;
+  height: 2em;
   border: 1px solid #dbdbdb;
-  border-radius: 15px;
   background-color: #043873;
   color: #ffffff;
   padding: 0px 10px;
@@ -69,17 +65,15 @@
 }
 
 @media screen and (min-width: 768px) {
-.image{
-  height:250px;
-  width:250px;
-}
-
+  .image {
+    height: 250px;
+    width: 250px;
+  }
 }
 
 @media screen and (min-width: 1024px) {
-  .image{
-    height:300px;
-    width:300px;
+  .image {
+    height: 300px;
+    width: 300px;
   }
-  
-  }
+}

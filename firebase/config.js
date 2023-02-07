@@ -1,24 +1,21 @@
-import { initializeApp } from "firebase/app";
-import { getAuth } from "firebase/auth";
-import {getStorage} from "firebase/storage"
-import { getDocs, getCollection, getFirestore } from "firebase/firestore";
+import { initializeApp } from 'firebase/app';
+import { getAuth } from 'firebase/auth';
+import { getStorage } from 'firebase/storage';
+import { getFirestore } from 'firebase/firestore';
 
-
-
-// Code Circle's config
 const firebaseConfig = {
-  apiKey: "AIzaSyDxBm0urtZBgYT5vP84OsqDzoMqHr0CNtI",
-  authDomain: "code-circle--x.firebaseapp.com",
-  projectId: "code-circle--x",
-  storageBucket: "code-circle--x.appspot.com",
-  messagingSenderId: "250555057230",
-  appId: "1:250555057230:web:b0b6fe6f763bc2f458ef1f",
-  measurementId: "G-LHZ1H9YKED",
+  apiKey: String(process.env.NEXT_PUBLIC_FIREBASE_API_KEY),
+  authDomain: 'code-circle-e4a7a.firebaseapp.com',
+  projectId: 'code-circle-e4a7a',
+  storageBucket: 'code-circle-e4a7a.appspot.com',
+  messagingSenderId: '607448944550',
+  appId: '1:607448944550:web:d2ec26786b015639c60967',
+  measurementId: 'G-VJPC5R0N31',
 };
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
-const storage = getStorage(app)
+const storage = getStorage(app);
 
 export { auth, db, app, storage };
