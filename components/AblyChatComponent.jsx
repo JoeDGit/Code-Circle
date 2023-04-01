@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
-import { useChannel } from "./AblyReactEffect";
-import { useAuthContext } from "../hooks/useAuthContext";
+import React, { useEffect, useState } from 'react';
+import { useChannel } from './AblyReactEffect';
+import { useAuthContext } from '../hooks/useAuthContext';
 import {
   collection,
   addDoc,
@@ -8,12 +8,12 @@ import {
   query,
   where,
   orderBy,
-} from "firebase/firestore";
-import { db } from "../firebase/config";
-import { useRouter } from "next/router";
-import styles from "../css/chat.module.css";
-import { motion } from "framer-motion";
-import Link from "next/link";
+} from 'firebase/firestore';
+import { db } from '../firebase/config';
+import { useRouter } from 'next/router';
+import styles from '../css/chat.module.css';
+import { motion } from 'framer-motion';
+import Link from 'next/link';
 
 const buttonVariants = {
   hover: {
@@ -28,7 +28,7 @@ const AblyChatComponent = (props) => {
   const { user } = useAuthContext();
   let inputBox = null;
   let messageEnd = null;
-  const [messageText, setMessageText] = useState("");
+  const [messageText, setMessageText] = useState('');
   const [receivedMessages, setMessages] = useState([]);
   const [messageHistory, setMessageHistory] = useState([]);
   const messageTextIsEmpty = messageText.trim().length === 0;
@@ -48,9 +48,9 @@ const AblyChatComponent = (props) => {
   useEffect(() => {
     async function getChatHistory() {
       const q = query(
-        collection(db, "messages"),
-        where("channel", "==", `${props.channelNum.channel}`),
-        orderBy("time")
+        collection(db, 'messages'),
+        where('channel', '==', `${props.channelNum.channel}`),
+        orderBy('time')
       );
       const querySnapshot = await getDocs(q);
       const returnedMessages = querySnapshot.docs.map((doc) => {
@@ -61,10 +61,10 @@ const AblyChatComponent = (props) => {
     getChatHistory().then((res) => {
       setMessageHistory(res);
     });
-    messageEnd.scrollIntoView({ behaviour: "smooth" });
+    messageEnd.scrollIntoView({ behaviour: 'smooth' });
   }, []);
   const sendChatMessage = (messageText) => {
-    const docRef = addDoc(collection(db, "messages"), {
+    const docRef = addDoc(collection(db, 'messages'), {
       user: user.displayName,
       message: messageText,
       channel: props.channelNum.channel,
@@ -72,7 +72,7 @@ const AblyChatComponent = (props) => {
       time: Date.now(),
     });
     channel.publish({ name: user.displayName, data: messageText });
-    setMessageText("");
+    setMessageText('');
     inputBox.focus();
   };
   const handleFormSubmission = (event) => {
@@ -99,7 +99,7 @@ const AblyChatComponent = (props) => {
   });
 
   const messages = receivedMessages.map((message, index) => {
-    const author = message.connectionId === ably.connection.id ? "me" : "other";
+    const author = message.connectionId === ably.connection.id ? 'me' : 'other';
 
     return (
       <section key={index}>
@@ -153,17 +153,17 @@ const AblyChatComponent = (props) => {
         >
           Send
         </motion.button>
-        <motion.button
-          variants={buttonVariants}
-          whileHover="hover"
-          whileTap="tap"
-          type="button"
-          className={styles.button}
-        >
-          <Link href="/video" target="_blank">
+        <Link href="/video" target="_blank">
+          <motion.button
+            variants={buttonVariants}
+            whileHover="hover"
+            whileTap="tap"
+            type="button"
+            className={styles.button}
+          >
             Video
-          </Link>
-        </motion.button>
+          </motion.button>
+        </Link>
       </form>
     </main>
   );
