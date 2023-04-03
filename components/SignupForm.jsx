@@ -30,7 +30,38 @@ export default function SignupForm() {
   const { signup, error, isPending } = useSignup();
   const router = useRouter();
 
-  //only signup if there is no error
+  useEffect(() => {
+    switch (error) {
+      case 'Firebase: Error (auth/email-already-in-use).':
+        setErrorMessage('Email already in use');
+        break;
+      case 'Firebase: Error (auth/invalid-email).':
+        setErrorMessage('Invalid email');
+        break;
+      case 'Firebase: Password should be at least 6 characters (auth/weak-password).':
+        setErrorMessage('Password should be at least 6 characters');
+        break;
+      default:
+        setErrorMessage(null);
+        break;
+    }
+  }, [error]);
+  useEffect(() => {
+    if (isPending === false && error === null) {
+      router.push('/home');
+    }
+  }, [error, isPending, router]);
+
+  const handleDisplayNameInput = (e) => {
+    setDisplayNameInput(e.target.value);
+  };
+
+  const handleEmailInput = (e) => {
+    setEmailInput(e.target.value);
+    if (e.target.value === '') {
+      setEmailInput(null);
+    }
+  };
   const handleSubmit = (e) => {
     e.preventDefault();
     postUser(displayNameInput, selectedLanguages);
@@ -57,38 +88,6 @@ export default function SignupForm() {
     setThumbnailError(null);
     setThumbnail(selected);
   };
-
-  useEffect(() => {
-    if (isPending === false && error === null) {
-      router.push('/home');
-    }
-  }, [error, isPending, router]);
-
-  const handleDisplayNameInput = (e) => {
-    setDisplayNameInput(e.target.value);
-  };
-
-  const handleEmailInput = (e) => {
-    setEmailInput(e.target.value);
-    if (e.target.value === '') {
-      setEmailInput(null);
-    }
-  };
-
-  useEffect(() => {
-    if (error === 'Firebase: Error (auth/email-already-in-use).') {
-      setErrorMessage('Email already in use');
-    } else if (error === 'Firebase: Error (auth/invalid-email).') {
-      setErrorMessage('Invalid email');
-    } else if (
-      error ===
-      'Firebase: Password should be at least 6 characters (auth/weak-password).'
-    ) {
-      setErrorMessage('Password should be at least 6 characters');
-    } else {
-      setErrorMessage(null);
-    }
-  }, [error]);
 
   return (
     <main className={styles.container}>
