@@ -46,6 +46,7 @@ export default function SignupForm() {
         break;
     }
   }, [error]);
+
   useEffect(() => {
     if (isPending === false && error === null) {
       router.push('/home');
@@ -70,23 +71,23 @@ export default function SignupForm() {
 
   const handleFileChange = (e) => {
     setThumbnail(null);
-    let selected = e.target.files[0];
+    let selectedAvatar = e.target.files[0];
 
-    if (!selected) {
+    if (!selectedAvatar) {
       setThumbnailError('Please select a file');
       return;
     }
-    if (!selected.type.includes('image')) {
+    if (!selectedAvatar.type.includes('image')) {
       setThumbnailError('Selected file must be an image');
       return;
     }
-    if (selected.size > 1000000) {
+    if (selectedAvatar.size > 1000000) {
       setThumbnailError('Image file size must be less than 10mb');
       return;
     }
 
     setThumbnailError(null);
-    setThumbnail(selected);
+    setThumbnail(selectedAvatar);
   };
 
   return (
@@ -101,7 +102,7 @@ export default function SignupForm() {
           }}
         />
 
-        <h1>Create an Account</h1>
+        <h1 className="text-3xl font-bold">Create an Account</h1>
       </div>
       <form className={styles.formContainer} onSubmit={handleSubmit}>
         <input
