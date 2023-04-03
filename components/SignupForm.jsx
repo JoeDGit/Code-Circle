@@ -75,7 +75,7 @@ export default function SignupForm() {
     let selectedAvatar = e.target.files[0];
 
     if (!selectedAvatar) {
-      setThumbnailError('Please select a file');
+      setThumbnailError('Please select a profile image');
       return;
     }
     if (!selectedAvatar.type.includes('image')) {
@@ -157,9 +157,10 @@ export default function SignupForm() {
             onChange={handleFileChange}
             className={styles.fileInput}
           />
-
-          {thumbnailError && <div className="error">{thumbnailError}</div>}
         </label>
+        {thumbnailError && (
+          <div className="text-red-600 mb-2">{thumbnailError}</div>
+        )}
         {photoUrl && (
           <div className="flex items-center gap-10 mb-2">
             <p>Profile Image Preview:</p>
