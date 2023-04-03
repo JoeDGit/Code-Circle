@@ -1,13 +1,14 @@
-import { useEffect, useState } from "react";
-import { useSignup } from "../hooks/useSignup";
-import { postUser } from "../hooks/postUser";
-import { useRouter } from "next/router";
-import { motion } from "framer-motion";
-import styles from "../css/login.module.css";
-import Image from "next/image";
-import logo from "../images/Logo_Icon.svg";
-import Link from "next/link";
-import LoaderButton from "./LoaderButton";
+import { useEffect, useState } from 'react';
+import { useSignup } from '../hooks/useSignup';
+import { postUser } from '../hooks/postUser';
+import { useRouter } from 'next/router';
+import { motion } from 'framer-motion';
+import styles from '../css/login.module.css';
+import Image from 'next/image';
+import logo from '../images/Logo_Icon.svg';
+import Link from 'next/link';
+import LoaderButton from './LoaderButton';
+import LanguageSelect from './LanguageSelect';
 
 const buttonVariants = {
   hover: {
@@ -19,22 +20,20 @@ const buttonVariants = {
 };
 
 export default function SignupForm() {
-  const [displayNameInput, setDisplayNameInput] = useState("");
-  const [emailInput, setEmailInput] = useState("");
-  const [passwordInput, setPasswordInput] = useState("");
-  const [techStack, setTechStack] = useState([]);
-  const [areAllTechCheckboxesUnselected, setAreAllTechCheckboxesUnselected] =
-    useState(true);
+  const [displayNameInput, setDisplayNameInput] = useState('');
+  const [emailInput, setEmailInput] = useState('');
+  const [passwordInput, setPasswordInput] = useState('');
   const [errorMessage, setErrorMessage] = useState(null);
   const [thumbnail, setThumbnail] = useState(null);
   const [thumbnailError, setThumbnailError] = useState(null);
+  const [selectedLanguages, setSelectedLanguages] = useState([]);
   const { signup, error, isPending } = useSignup();
   const router = useRouter();
 
   //only signup if there is no error
   const handleSubmit = (e) => {
     e.preventDefault();
-    postUser(displayNameInput, techStack);
+    postUser(displayNameInput, selectedLanguages);
     signup(emailInput, passwordInput, displayNameInput, thumbnail);
   };
 
@@ -43,15 +42,15 @@ export default function SignupForm() {
     let selected = e.target.files[0];
 
     if (!selected) {
-      setThumbnailError("Please select a file");
+      setThumbnailError('Please select a file');
       return;
     }
-    if (!selected.type.includes("image")) {
-      setThumbnailError("Selected file must be an image");
+    if (!selected.type.includes('image')) {
+      setThumbnailError('Selected file must be an image');
       return;
     }
     if (selected.size > 1000000) {
-      setThumbnailError("Image file size must be less than 10mb");
+      setThumbnailError('Image file size must be less than 10mb');
       return;
     }
 
@@ -61,34 +60,9 @@ export default function SignupForm() {
 
   useEffect(() => {
     if (isPending === false && error === null) {
-      router.push("/home");
+      router.push('/home');
     }
   }, [error, isPending, router]);
-  const onChangeTechStack = (e) => {
-    const techCheckboxes = [...e.target.parentElement.elements];
-
-    if (e.target.checked) {
-      setTechStack((currentTechStack) => {
-        return [...currentTechStack, e.target.name];
-      });
-    } else {
-      setTechStack((currentTechStack) => {
-        const updatedTechStack = [];
-        currentTechStack.forEach((tech) => {
-          if (tech !== e.target.name) {
-            updatedTechStack.push(tech);
-          }
-        });
-        return updatedTechStack;
-      });
-    }
-
-    const allCheckboxesUnselected = techCheckboxes.every((tech) => {
-      return tech.checked === false;
-    });
-
-    setAreAllTechCheckboxesUnselected(allCheckboxesUnselected);
-  };
 
   const handleDisplayNameInput = (e) => {
     setDisplayNameInput(e.target.value);
@@ -96,23 +70,22 @@ export default function SignupForm() {
 
   const handleEmailInput = (e) => {
     setEmailInput(e.target.value);
-    if (e.target.value === "") {
+    if (e.target.value === '') {
       setEmailInput(null);
     }
   };
 
   useEffect(() => {
-    if (error === "Firebase: Error (auth/email-already-in-use).") {
-      setErrorMessage("Email already in use");
-    } else if (error === "Firebase: Error (auth/invalid-email).") {
-      setErrorMessage("Invalid email");
+    if (error === 'Firebase: Error (auth/email-already-in-use).') {
+      setErrorMessage('Email already in use');
+    } else if (error === 'Firebase: Error (auth/invalid-email).') {
+      setErrorMessage('Invalid email');
     } else if (
       error ===
-      "Firebase: Password should be at least 6 characters (auth/weak-password)."
+      'Firebase: Password should be at least 6 characters (auth/weak-password).'
     ) {
-      setErrorMessage("Password should be at least 6 characters");
+      setErrorMessage('Password should be at least 6 characters');
     } else {
-      setErrorMessage(null);
       setErrorMessage(null);
     }
   }, [error]);
@@ -125,7 +98,7 @@ export default function SignupForm() {
           alt="logo"
           src={logo}
           onClick={() => {
-            router.push("/");
+            router.push('/');
           }}
         />
 
@@ -151,6 +124,10 @@ export default function SignupForm() {
           onChange={handleEmailInput}
           required
         />
+        <LanguageSelect
+          selectedLanguages={selectedLanguages}
+          setSelectedLanguages={setSelectedLanguages}
+        />
 
         <br />
 
@@ -164,110 +141,6 @@ export default function SignupForm() {
           }}
           required
         />
-
-        <fieldset className={styles.fieldset}>
-          <legend>Languages:</legend>
-          <input
-            type="checkbox"
-            id="html"
-            name="HTML"
-            onChange={(e) => {
-              onChangeTechStack(e);
-            }}
-          />
-
-          <label htmlFor="html">HTML</label>
-
-          <input
-            type="checkbox"
-            id="css"
-            name="CSS"
-            onChange={(e) => {
-              onChangeTechStack(e);
-            }}
-          />
-          <label htmlFor="css">CSS</label>
-
-          <input
-            type="checkbox"
-            id="javascript"
-            name="JavaScript"
-            onChange={(e) => {
-              onChangeTechStack(e);
-            }}
-          />
-          <label htmlFor="javascript">JavaScript</label>
-
-          <input
-            type="checkbox"
-            id="java"
-            name="Java"
-            onChange={(e) => {
-              onChangeTechStack(e);
-            }}
-          />
-          <label htmlFor="java">Java</label>
-
-          <input
-            type="checkbox"
-            id="php"
-            name="PHP"
-            onChange={(e) => {
-              onChangeTechStack(e);
-            }}
-          />
-          <label htmlFor="php">PHP</label>
-
-          <input
-            type="checkbox"
-            id="c#"
-            name="C#"
-            onChange={(e) => {
-              onChangeTechStack(e);
-            }}
-          />
-          <label htmlFor="c#">C#</label>
-
-          <input
-            type="checkbox"
-            id="python"
-            name="Python"
-            onChange={(e) => {
-              onChangeTechStack(e);
-            }}
-          />
-          <label htmlFor="python">Python</label>
-
-          <input
-            type="checkbox"
-            id="go"
-            name="Go"
-            onChange={(e) => {
-              onChangeTechStack(e);
-            }}
-          />
-          <label htmlFor="go">Go</label>
-
-          <input
-            type="checkbox"
-            id="swift"
-            name="Swift"
-            onChange={(e) => {
-              onChangeTechStack(e);
-            }}
-          />
-          <label htmlFor="swift">Swift</label>
-
-          <input
-            type="checkbox"
-            id="ruby"
-            name="Ruby"
-            onChange={(e) => {
-              onChangeTechStack(e);
-            }}
-          />
-          <label htmlFor="ruby">Ruby</label>
-        </fieldset>
 
         <label className={styles.label}>
           <span>Add Profile Image</span>
@@ -286,16 +159,16 @@ export default function SignupForm() {
           whileTap="tap"
           className={styles.button}
         >
-          {isPending ? <LoaderButton /> : "Sign Up"}
+          {isPending ? <LoaderButton /> : 'Sign Up'}
         </motion.button>
-        {errorMessage && <div style={{ color: "red" }}>{errorMessage}</div>}
+        {errorMessage && <div style={{ color: 'red' }}>{errorMessage}</div>}
 
         <Link className={styles.forgotPassword} href="/">
           Forgot Password?
         </Link>
 
         <div>
-          {`Already have an account?`}{" "}
+          {`Already have an account?`}{' '}
           <Link className={styles.forgotPassword} href="/login">
             Login
           </Link>
