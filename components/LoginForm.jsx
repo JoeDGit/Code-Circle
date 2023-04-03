@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useSignin } from '../hooks/useSignin';
 import { useRouter } from 'next/router';
 import styles from '../css/login.module.css';
-import logo from '../images/Logo_Icon.svg';
+import logo from '../images/Logo.svg';
 import Image from 'next/image';
 
 import { motion } from 'framer-motion';
@@ -36,17 +36,18 @@ export default function LoginForm() {
   return (
     <main className={styles.container}>
       <div className={styles.header}>
-        <Image
-          className={styles.logoStyle}
-          alt="logo"
-          src={logo}
-          onClick={() => {
-            router.push('/');
-          }}
-        />
+        <div className="bg-[#043873] p-2 pr-5 rounded mb-4">
+          <Image
+            className={styles.logoStyle}
+            alt="logo"
+            src={logo}
+            onClick={() => {
+              router.push('/');
+            }}
+          />
+        </div>
 
-        <h1>Login</h1>
-        <h1>Welcome Back</h1>
+        <h1 className="text-4xl ">Login</h1>
       </div>
       <div>
         <form onSubmit={handleSubmit} className={styles.formContainer}>

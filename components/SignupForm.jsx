@@ -5,7 +5,7 @@ import { useRouter } from 'next/router';
 import { motion } from 'framer-motion';
 import styles from '../css/login.module.css';
 import Image from 'next/image';
-import logo from '../images/Logo_Icon.svg';
+import logo from '../images/Logo.svg';
 import Link from 'next/link';
 import LoaderButton from './LoaderButton';
 import LanguageSelect from './LanguageSelect';
@@ -109,14 +109,16 @@ export default function SignupForm() {
   return (
     <main className={styles.container}>
       <div className={styles.header}>
-        <Image
-          className={styles.logoStyle}
-          alt="logo"
-          src={logo}
-          onClick={() => {
-            router.push('/');
-          }}
-        />
+        <div className="bg-[#043873] p-2 pr-5 rounded mb-4">
+          <Image
+            className={styles.logoStyle}
+            alt="logo"
+            src={logo}
+            onClick={() => {
+              router.push('/');
+            }}
+          />
+        </div>
 
         <h1 className="text-3xl font-bold">Create an Account</h1>
       </div>
