@@ -1,5 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 * {
-  font-family: "Archivo", sans-serif;
+  font-family: 'Archivo', sans-serif;
 }
 
 ol {
