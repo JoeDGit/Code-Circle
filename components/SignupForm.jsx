@@ -9,6 +9,7 @@ import logo from '../images/Logo_Icon.svg';
 import Link from 'next/link';
 import LoaderButton from './LoaderButton';
 import LanguageSelect from './LanguageSelect';
+import LoginAsTest from './LoginAsTest';
 
 const buttonVariants = {
   hover: {
@@ -200,6 +201,7 @@ export default function SignupForm() {
             Login
           </Link>
         </div>
+        <LoginAsTest />
       </form>
     </main>
   );

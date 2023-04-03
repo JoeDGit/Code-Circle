@@ -7,6 +7,7 @@ import Image from 'next/image';
 
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import LoginAsTest from './LoginAsTest';
 
 const buttonVariants = {
   hover: {
@@ -81,6 +82,7 @@ export default function LoginForm() {
           >
             Login
           </motion.button>
+          <LoginAsTest />
           <div>
             {`Don't have an account?`}{' '}
             <Link className={styles.forgotPassword} href="/create-an-account">
