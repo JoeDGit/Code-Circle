@@ -25,6 +25,7 @@ export default function SignupForm() {
   const [passwordInput, setPasswordInput] = useState('');
   const [errorMessage, setErrorMessage] = useState(null);
   const [thumbnail, setThumbnail] = useState(null);
+  const [photoUrl, setPhotoUrl] = useState('');
   const [thumbnailError, setThumbnailError] = useState(null);
   const [selectedLanguages, setSelectedLanguages] = useState([]);
   const { signup, error, isPending } = useSignup();
@@ -85,6 +86,12 @@ export default function SignupForm() {
       setThumbnailError('Image file size must be less than 10mb');
       return;
     }
+
+    const reader = new FileReader();
+    reader.onload = () => {
+      setPhotoUrl(reader.result);
+    };
+    reader.readAsDataURL(selectedAvatar);
 
     setThumbnailError(null);
     setThumbnail(selectedAvatar);
@@ -150,8 +157,20 @@ export default function SignupForm() {
             onChange={handleFileChange}
             className={styles.fileInput}
           />
+
           {thumbnailError && <div className="error">{thumbnailError}</div>}
         </label>
+        {photoUrl && (
+          <div className="flex items-center gap-10 mb-2">
+            <p>Profile Image Preview:</p>
+            <Image
+              width="60"
+              height="60"
+              src={photoUrl}
+              alt="Profile Preview"
+            />
+          </div>
+        )}
 
         <motion.button
           variants={buttonVariants}
