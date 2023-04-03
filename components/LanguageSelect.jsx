@@ -17,7 +17,6 @@ export default function LanguageSelect({
         id="language-select"
         isMulti
         placeholder="Add your programming languages"
-        style={{ width: 'full' }}
         onChange={handleChange}
         options={languageOptions}
         value={languageOptions.filter((option) =>
