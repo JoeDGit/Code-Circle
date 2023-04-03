@@ -66,6 +66,14 @@ export default function SignupForm() {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (selectedLanguages.length < 1) {
+      setErrorMessage('Please Select your known programming languages');
+      return;
+    }
+    if (!thumbnail) {
+      setErrorMessage('Please Upload a profile picture');
+      return;
+    }
     postUser(displayNameInput, selectedLanguages);
     signup(emailInput, passwordInput, displayNameInput, thumbnail);
   };
@@ -152,7 +160,6 @@ export default function SignupForm() {
         <label className={styles.label}>
           <span>Add Profile Image</span>
           <input
-            required
             type="file"
             onChange={handleFileChange}
             className={styles.fileInput}
