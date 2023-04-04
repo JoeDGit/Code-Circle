@@ -62,7 +62,7 @@ export default function HomePagePostCard({ post, replyCountByPostId }) {
               >
                 @{post.user} in
               </div>
-              <div className={styles.programmingLanguage}>
+              <div className="font-bold mr-[5px] text-[#94a3b8]">
                 {post.programmingLanguage}
               </div>
               <div className={styles.time}>
