@@ -34,11 +34,11 @@ export default function LoginForm() {
     redirect();
   };
   return (
-    <main className={styles.container}>
-      <div className={styles.header}>
+    <main className="container flex flex-col items-center justify-center ml-2 md:w-1/2 gap-[30px] md:h-[75vh] py-[50px] md:pt-[100px]">
+      <div className="flex flex-col text-center items-center">
         <div className="bg-[#043873] p-2 pr-5 rounded mb-4">
           <Image
-            className={styles.logoStyle}
+            className="cursor-pointer"
             alt="logo"
             src={logo}
             onClick={() => {
@@ -47,13 +47,13 @@ export default function LoginForm() {
           />
         </div>
 
-        <h1 className="text-4xl ">Login</h1>
+        <h1 className="text-4xl font-bold">Login</h1>
       </div>
       <div>
-        <form onSubmit={handleSubmit} className={styles.formContainer}>
+        <form onSubmit={handleSubmit} className="flex flex-col items-center">
           <input
             autoComplete="email"
-            className={styles.inputStyle}
+            className="w-[312px] h-[50px] border border-[#dbdbdb] rounded-[15px] bg-[#fafafa] py-0 px-3 mb-4 text-[14px] mr-2"
             type="text"
             placeholder="Enter your email"
             onChange={(e) => {
@@ -64,14 +64,14 @@ export default function LoginForm() {
 
           <input
             autoComplete="current-password"
-            className={styles.inputStyle}
+            className="w-[312px] h-[50px] border border-[#dbdbdb] rounded-[15px] bg-[#fafafa] py-0 px-3 mb-4 text-[14px] mr-2"
             type="password"
             placeholder="Enter your password"
             onChange={(e) => {
               setPasswordInput(e.target.value);
             }}
           />
-          <Link className={styles.forgotPassword} href="/">
+          <Link className="decoration-none text-[#4f9cf9]" href="/">
             Forgot Password?
           </Link>
 
@@ -79,14 +79,17 @@ export default function LoginForm() {
             variants={buttonVariants}
             whileHover="hover"
             whileTap="tap"
-            className={styles.button}
+            className="flex justify-center items-center w-60 h-12 md:w-[312px] md:h-[64px] border border-[#dbdbdb] rounded-[15px] bg-[#043873] text-[#ffff] px-0 text-[14px] cursor-pointer my-2"
           >
             Login
           </motion.button>
           <LoginAsTest />
           <div>
             {`Don't have an account?`}{' '}
-            <Link className={styles.forgotPassword} href="/create-an-account">
+            <Link
+              className="decoration-none text-[#4f9cf9]"
+              href="/create-an-account"
+            >
               Sign Up
             </Link>
           </div>
