@@ -38,13 +38,13 @@
   align-items: flex-start;
 } */
 
-.colTwo {
+/* .colTwo {
   align-self: flex-start;
   width: 100%;
   height: 100%;
   padding-top: 20px;
   font-size: 10px;
-}
+} */
 
 .colThree {
   align-self: flex-start;
@@ -213,9 +213,9 @@
   gap: 5px;
 }
 @media screen and (min-width: 600px) {
-  .colTwo {
+  /* .colTwo {
     font-size: 16px;
-  }
+  } */
 }
 
 @media screen and (min-width: 1024px) {
@@ -234,10 +234,10 @@
     flex-direction: row;
     gap: 15px;
   } */
-  .colTwo {
+  /* .colTwo {
     width: 60%;
     font-size: 16px;
-  }
+  } */
   .image {
     width: 300px;
     height: 300px;
