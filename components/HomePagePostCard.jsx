@@ -87,7 +87,7 @@ export default function HomePagePostCard({ post, replyCountByPostId }) {
               </div>
             </div>
           </div>
-          <div className={styles.colThree}>
+          <div className="flex w-1/3 justify-end">
             {languageIcons[post.programmingLanguage.toLowerCase()]}
           </div>
         </div>
