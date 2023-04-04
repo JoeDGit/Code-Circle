@@ -53,7 +53,7 @@ export default function HomePagePostCard({ post, replyCountByPostId }) {
             )}
           </div>
           <div className="self-start w-full h-full pt-[20px] text-[10px] md:w-[60%] md:text-[16px]">
-            <div className={styles.userInfo}>
+            <div className="flex">
               <div
                 onClick={() => {
                   router.push(`/users/${post.user}`);
