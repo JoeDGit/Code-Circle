@@ -169,7 +169,7 @@ export default function SignupForm() {
           />
         </label>
         {thumbnailError && (
-          <div className="text-red-600 mb-2">{thumbnailError}</div>
+          <div className="text-rose-500 mb-2">{thumbnailError}</div>
         )}
         {photoUrl && (
           <div className="flex items-center gap-10 mb-2">
