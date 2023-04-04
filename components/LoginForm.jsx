@@ -71,7 +71,10 @@ export default function LoginForm() {
               setPasswordInput(e.target.value);
             }}
           />
-          <Link className="decoration-none text-[#4f9cf9]" href="/">
+          <Link
+            className="decoration-none text-[#4f9cf9]"
+            href="/reset-password"
+          >
             Forgot Password?
           </Link>
 

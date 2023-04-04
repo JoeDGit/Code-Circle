@@ -3,9 +3,8 @@ import logo from '../images/Logo.svg';
 import Image from 'next/image';
 import { auth } from '../firebase/config';
 import { sendPasswordResetEmail } from 'firebase/auth';
-
-import { motion } from 'framer-motion';
 import Link from 'next/link';
+import { motion } from 'framer-motion';
 
 const buttonVariants = {
   hover: {
@@ -86,7 +85,7 @@ export default function ForgotPasswordForm() {
               </div>
             )}
             <div>
-              <Link className="decoration-none text-[#4f9cf9]" href="/">
+              <Link className="decoration-none text-[#4f9cf9]" href="/login">
                 Return to login
               </Link>
             </div>
