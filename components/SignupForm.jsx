@@ -128,7 +128,7 @@ export default function SignupForm() {
       </div>
       <form className="flex flex-col items-center" onSubmit={handleSubmit}>
         <input
-          className="w-[312px] h-[50px] border border-[#dbdbdb] rounded-[15px] bg-[#fafafa] py-0 px-3 mb-4 text-[14px]"
+          className="w-[312px] h-[50px] border border-[#dbdbdb] rounded-[15px] bg-[#fafafa] py-0 px-3 mb-4 text-[14px] mr-2"
           type="text"
           placeholder="Enter a username"
           value={displayNameInput}
@@ -137,7 +137,7 @@ export default function SignupForm() {
         />
 
         <input
-          className="w-[312px] h-[50px] border border-[#dbdbdb] rounded-[15px] bg-[#fafafa] py-0 px-3  text-[14px]"
+          className="w-[312px] h-[50px] border border-[#dbdbdb] rounded-[15px] bg-[#fafafa] py-0 px-3  text-[14px] mr-2"
           type="email"
           placeholder="Enter your email"
           value={emailInput}
@@ -150,7 +150,7 @@ export default function SignupForm() {
         />
 
         <input
-          className="w-[312px] h-[50px] border border-[#dbdbdb] rounded-[15px] bg-[#fafafa] py-0 px-3 mb-4 text-[14px]"
+          className="w-[312px] h-[50px] border border-[#dbdbdb] rounded-[15px] bg-[#fafafa] py-0 px-3 mb-4 text-[14px] mr-2"
           type="password"
           placeholder="Enter your password"
           value={passwordInput}
@@ -160,7 +160,7 @@ export default function SignupForm() {
           required
         />
 
-        <label className="flex justify-center items-center w-60 h-12 md:w-[342px] md:h-[64px] border border-[#dbdbdb] rounded-[15px] bg-[#043873] text-[#ffff] px-0 text-[14px] cursor-pointer mb-2">
+        <label className="flex justify-center items-center w-60 h-12 md:w-[312px] md:h-[64px] border border-[#dbdbdb] rounded-[15px] bg-[#043873] text-[#ffff] px-0 text-[14px] cursor-pointer mb-2">
           <span>Add Profile Image</span>
           <input
             type="file"
@@ -187,7 +187,7 @@ export default function SignupForm() {
           variants={buttonVariants}
           whileHover="hover"
           whileTap="tap"
-          className="flex justify-center items-center w-60 h-12 md:w-[342px] md:h-[64px] border border-[#dbdbdb] rounded-[15px] bg-[#043873] text-[#ffff] px-0 text-[14px] cursor-pointer"
+          className="flex justify-center items-center w-60 h-12 md:w-[312px] md:h-[64px] border border-[#dbdbdb] rounded-[15px] bg-[#043873] text-[#ffff] px-0 text-[14px] cursor-pointer"
         >
           {isPending ? <LoaderButton /> : 'Sign Up'}
         </motion.button>

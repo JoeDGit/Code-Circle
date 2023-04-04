@@ -32,7 +32,7 @@ export default function LoginAsTest() {
       variants={buttonVariants}
       whileHover="hover"
       whileTap="tap"
-      className="flex justify-center items-center w-60 md:w-[342px] h-12 md:h-[64px] border border-[#dbdbdb] rounded-[15px] bg-[#043873] text-[#ffff] px-0 text-[14px] cursor-pointer"
+      className="flex justify-center items-center w-60 md:w-[312px] h-12 md:h-[64px] border border-[#dbdbdb] rounded-[15px] bg-[#043873] text-[#ffff] px-0 text-[14px] cursor-pointer"
       onClick={handleSubmit}
     >
       Login as test user?
