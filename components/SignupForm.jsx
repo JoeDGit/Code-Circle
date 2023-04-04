@@ -160,7 +160,7 @@ export default function SignupForm() {
           required
         />
 
-        <label className={styles.label}>
+        <label className="flex justify-center items-center w-60 h-12 md:w-[342px] md:h-[64px] border border-[#dbdbdb] rounded-[15px] bg-[#043873] text-[#ffff] px-0 text-[14px] cursor-pointer mb-2">
           <span>Add Profile Image</span>
           <input
             type="file"
@@ -187,7 +187,7 @@ export default function SignupForm() {
           variants={buttonVariants}
           whileHover="hover"
           whileTap="tap"
-          className={styles.button}
+          className="flex justify-center items-center w-60 h-12 md:w-[342px] md:h-[64px] border border-[#dbdbdb] rounded-[15px] bg-[#043873] text-[#ffff] px-0 text-[14px] cursor-pointer"
         >
           {isPending ? <LoaderButton /> : 'Sign Up'}
         </motion.button>
