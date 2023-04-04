@@ -65,9 +65,9 @@
   display: flex;
 }
 
-.profileContainer {
+/* .profileContainer {
   align-self: flex-start;
-}
+} */
 
 .profileImage {
   border-radius: 50%;
