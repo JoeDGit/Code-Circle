@@ -31,9 +31,10 @@ export default function HomePagePostCard({ post, replyCountByPostId }) {
         <div className="flex flex-col items-start w-full h-1/5 md:flex-row md:gap-[15px]">
           <div className="self-start">
             {post.photoURL ? (
-              // eslint-disable-next-line @next/next/no-img-element
-              <img
+              <Image
                 src={post.photoURL}
+                width={60}
+                height={60}
                 alt="profile "
                 className={styles.profileImage}
                 onClick={() => {
