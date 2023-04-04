@@ -11,7 +11,7 @@ export default function CreateAnAccount() {
         paragraph2="Our community is filled with talented programmers who are eager to work together and build something great. With Code Circle, you can easily connect with other developers, discuss project ideas, and find a programming partner that suits your needs."
         paragraph3="So why wait? Sign up today and start building your dream project with a partner who shares your vision. We can't wait to see what you create!"
       />
-      <SignupForm />;
+      <SignupForm />
     </div>
   );
 }
