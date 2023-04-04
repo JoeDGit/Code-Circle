@@ -28,7 +28,7 @@ export default function HomePagePostCard({ post, replyCountByPostId }) {
       }}
     >
       <div className="flex">
-        <div className={styles.colOne}>
+        <div className="flex flex-col items-start w-full h-1/5 md:flex-row md:gap-[15px]">
           <div className={styles.profileContainer}>
             {post.photoURL ? (
               // eslint-disable-next-line @next/next/no-img-element
