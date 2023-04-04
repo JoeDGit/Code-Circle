@@ -4,7 +4,7 @@ import styles from '../css/login.module.css';
 
 export default function CreateAnAccount() {
   return (
-    <div className={styles.login}>
+    <div className="flex">
       <FormSide
         title="Welcome to Code Circle"
         paragraph1="Are you looking for a programming partner to collaborate with on your personal projects? Look no further! Code Circle is the perfect platform for finding like-minded individuals who share your passion for coding."

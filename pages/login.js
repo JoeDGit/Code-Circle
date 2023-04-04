@@ -4,7 +4,7 @@ import styles from '../css/login.module.css';
 
 export default function Login() {
   return (
-    <div className={styles.login}>
+    <div className="flex">
       <FormSide
         title="Welcome Back to Code Circle"
         paragraph1="As a member of our community, you have access to a diverse range of talented programmers and exciting personal projects. Whether you're looking for a programming partner, seeking feedback on your code, or simply want to connect with like-minded individuals, Code Circle is the perfect platform for you."
