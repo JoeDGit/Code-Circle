@@ -115,7 +115,7 @@ export default function SignupForm() {
       <div className="flex flex-col text-center items-center">
         <div className="bg-[#043873] p-2 pr-5 rounded mb-4">
           <Image
-            className={styles.logoStyle}
+            className="cursor-pointer"
             alt="logo"
             src={logo}
             onClick={() => {

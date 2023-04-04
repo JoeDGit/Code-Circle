@@ -13,16 +13,16 @@
   gap: 30px;
 } */
 
-.header {
+/* .header {
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
-}
+} */
 
-.logoStyle {
+/* .logoStyle {
   cursor: pointer;
-}
+} */
 
 .formContainer {
   display: flex;
