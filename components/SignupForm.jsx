@@ -193,13 +193,13 @@ export default function SignupForm() {
         </motion.button>
         {errorMessage && <div style={{ color: 'red' }}>{errorMessage}</div>}
 
-        <Link className={styles.forgotPassword} href="/">
+        <Link className="decoration-none text-[#4f9cf9]" href="/">
           Forgot Password?
         </Link>
 
-        <div className="mb-6 mt-2">
+        <div className="mb-6 mt-2 ">
           {`Already have an account?`}{' '}
-          <Link className={styles.forgotPassword} href="/login">
+          <Link className="decoration-none text-[#4f9cf9]" href="/login">
             Login
           </Link>
         </div>

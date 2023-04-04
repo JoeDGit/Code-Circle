@@ -75,7 +75,7 @@
   cursor: pointer;
 } */
 
-.forgotPassword:visited {
+/* .forgotPassword:visited {
   text-decoration: none;
   color: #4f9cf9;
 }
@@ -83,14 +83,9 @@
 .forgotPassword:link {
   text-decoration: none;
   color: #4f9cf9;
-}
+} */
 
-.fieldset {
-  border: 1px solid #dbdbdb;
-  width: 342px;
-  display: flex;
-  margin-bottom: 20px;
-}
+
 
 .sideContainer {
   display: none;
