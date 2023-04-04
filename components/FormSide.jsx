@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import styles from '../css/login.module.css';
-import logo from '../images/Logo_icon.svg';
+import logo from '../images/Logo_Icon.svg';
 
 export default function FormSide({
   title,
