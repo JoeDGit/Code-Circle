@@ -27,7 +27,7 @@ export default function HomePagePostCard({ post, replyCountByPostId }) {
         router.push(`/posts/${post.postId}`);
       }}
     >
-      <div className={styles.mainContainer}>
+      <div className="flex">
         <div className={styles.colOne}>
           <div className={styles.profileContainer}>
             {post.photoURL ? (
