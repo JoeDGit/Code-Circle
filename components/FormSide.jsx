@@ -19,10 +19,10 @@ export default function FormSide({
       />
       <div className={styles.sideTitle}>{title}</div>
       <p className={styles.description}>{paragraph1}</p>
-      <p className={styles.description}>{paragraph2}</p>
-      <p className={styles.description}>{paragraph3}</p>
+      {paragraph2 && <p className={styles.description}>{paragraph2}</p>}
+      {paragraph3 && <p className={styles.description}>{paragraph3}</p>}
 
-      <div className={styles.side_btn}>{button}</div>
+      {button && <div className={styles.side_btn}>{button}</div>}
     </div>
   );
 }
