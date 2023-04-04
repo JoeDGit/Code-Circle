@@ -1,11 +1,9 @@
 import React from 'react';
-import Link from 'next/link';
 import styles from '../css/posts.module.css';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
 import { BiMessageRounded } from 'react-icons/bi';
 import profilePlaceholder from '../images/profilePlaceholder.png';
-import imagePlaceholder from '../images/image-placeholder.svg';
 import moment from 'moment/moment';
 import { useAuthContext } from '../hooks/useAuthContext';
 import languageIcons from '../util/languageIcons';
@@ -17,9 +15,8 @@ export default function HomePagePostCard({ post, replyCountByPostId }) {
 
   const { user } = useAuthContext();
 
-  const date = new Date(post.postTime);
-  const readableDate = date.toLocaleDateString('en-GB');
-  const readableTime = date.toLocaleTimeString('en-GB').slice(0, 5);
+  const dateObject = moment(post.postTime);
+  const readableDate = dateObject.fromNow();
 
   return (
     <div
@@ -70,7 +67,7 @@ export default function HomePagePostCard({ post, replyCountByPostId }) {
                 {post.programmingLanguage}
               </div>
               <div className="font-bold mr-[5px] text-[#94a3b8]">
-                Today <span className="text-black">at</span> {readableTime}
+                <span className="text-black">{readableDate}</span>
               </div>
             </div>
 
