@@ -30,7 +30,7 @@ export default function HomePagePostCard({ post, replyCountByPostId }) {
     >
       <div className="flex">
         <div className="flex flex-col items-start w-full h-1/5 md:flex-row md:gap-[15px]">
-          <div className="self-start">
+          <div className="flex justify-between md:block md:self-start w-full sm:w-auto">
             {post.photoURL ? (
               <Image
                 src={post.photoURL}
@@ -52,9 +52,12 @@ export default function HomePagePostCard({ post, replyCountByPostId }) {
                 }}
               />
             )}
+            <div className="flex md:hidden self-end">
+              {languageIcons[post.programmingLanguage.toLowerCase()]}
+            </div>
           </div>
-          <div className="self-start w-full h-full pt-[20px] text-[10px] md:w-[60%] md:text-[16px]">
-            <div className="flex">
+          <div className=" w-full h-full pt-[20px] text-[10px] md:w-[60%] md:text-[16px]">
+            <div className="flex items-start">
               <div
                 onClick={() => {
                   router.push(`/users/${post.user}`);
@@ -84,7 +87,7 @@ export default function HomePagePostCard({ post, replyCountByPostId }) {
               </div>
             </div>
           </div>
-          <div className="flex w-1/3 justify-end">
+          <div className="hidden md:flex w-1/3 justify-end">
             {languageIcons[post.programmingLanguage.toLowerCase()]}
           </div>
         </div>
