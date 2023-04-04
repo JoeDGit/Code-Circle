@@ -107,7 +107,11 @@ export default function SignupForm() {
   };
 
   return (
-    <main className={styles.container}>
+    <main
+      className={
+        'container flex flex-col items-center justify-center ml-2 md:w-1/2 gap-[30px] md:h-[75vh] py-[50px] md:pt-[100px]'
+      }
+    >
       <div className={styles.header}>
         <div className="bg-[#043873] p-2 pr-5 rounded mb-4">
           <Image
@@ -197,7 +201,7 @@ export default function SignupForm() {
           Forgot Password?
         </Link>
 
-        <div>
+        <div className="mb-6 mt-2">
           {`Already have an account?`}{' '}
           <Link className={styles.forgotPassword} href="/login">
             Login
