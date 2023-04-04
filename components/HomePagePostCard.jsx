@@ -58,7 +58,7 @@ export default function HomePagePostCard({ post, replyCountByPostId }) {
                 onClick={() => {
                   router.push(`/users/${post.user}`);
                 }}
-                className={styles.atUser}
+                className="font-bold mx-[5px] text-[#94a3b8]"
               >
                 @{post.user} in
               </div>
