@@ -12,7 +12,7 @@ export default function LanguageSelect({
   };
 
   return (
-    <div className="mt-6">
+    <div className="mt-4 mb-4">
       <Select
         id="language-select"
         isMulti
