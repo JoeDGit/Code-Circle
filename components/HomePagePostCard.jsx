@@ -74,9 +74,6 @@ export default function HomePagePostCard({ post, replyCountByPostId }) {
             <div className={styles.details}>
               <div>
                 <div className={styles.title}>{post.postTitle}</div>
-                <div className={styles.description}>
-                  {post.projectDescription}
-                </div>
               </div>
               <div>
                 <div>
