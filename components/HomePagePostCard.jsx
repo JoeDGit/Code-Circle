@@ -35,8 +35,8 @@ export default function HomePagePostCard({ post, replyCountByPostId }) {
                 src={post.photoURL}
                 width={60}
                 height={60}
-                alt="profile "
-                className={styles.profileImage}
+                alt="profile"
+                className="rounded-full w-[60px] h-[60px]"
                 onClick={() => {
                   router.push(`/users/${user?.displayName}`);
                 }}
@@ -45,7 +45,7 @@ export default function HomePagePostCard({ post, replyCountByPostId }) {
               <Image
                 src={profilePlaceholder}
                 alt="profile"
-                className={styles.profileImage}
+                className="rounded-full w-[60px] h-[60px]"
                 onClick={() => {
                   router.push(`/users/${user?.displayName}`);
                 }}
