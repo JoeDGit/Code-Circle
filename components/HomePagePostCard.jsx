@@ -8,6 +8,7 @@ import profilePlaceholder from '../images/profilePlaceholder.png';
 import imagePlaceholder from '../images/image-placeholder.svg';
 import moment from 'moment/moment';
 import { useAuthContext } from '../hooks/useAuthContext';
+import languageIcons from '../util/languageIcons';
 
 export default function HomePagePostCard({ post, replyCountByPostId }) {
   const router = useRouter();
@@ -87,11 +88,7 @@ export default function HomePagePostCard({ post, replyCountByPostId }) {
             </div>
           </div>
           <div className={styles.colThree}>
-            <Image
-              src={imagePlaceholder}
-              className={styles.image}
-              alt="image placeholder"
-            />
+            {languageIcons[post.programmingLanguage.toLowerCase()]}
           </div>
         </div>
       </div>
