@@ -126,7 +126,7 @@ export default function SignupForm() {
 
         <h1 className="text-3xl font-bold">Create an Account</h1>
       </div>
-      <form className={styles.formContainer} onSubmit={handleSubmit}>
+      <form className="flex flex-col items-center" onSubmit={handleSubmit}>
         <input
           className={styles.inputStyle}
           type="text"

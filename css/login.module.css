@@ -24,11 +24,11 @@
   cursor: pointer;
 } */
 
-.formContainer {
+/* .formContainer {
   display: flex;
   flex-direction: column;
   align-items: center;
-}
+} */
 
 .fileInput {
   display: none;
