@@ -20,6 +20,7 @@ export default function Button({
   onClick,
   target,
   image = null,
+  containerPos = null,
 }) {
   const sizeStyles = {
     small: { padding: '8px 16px 8px 16px', fontSize: '14px', height: '30px' },
@@ -57,7 +58,7 @@ export default function Button({
     },
   };
   return (
-    <div>
+    <div className={`flex ${containerPos}`}>
       <motion.a
         variants={buttonVariants}
         whileHover="hover"
