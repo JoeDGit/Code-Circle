@@ -60,13 +60,13 @@ export default function HomePagePostCard({ post, replyCountByPostId }) {
                 }}
                 className="font-bold mx-[5px] text-[#94a3b8]"
               >
-                @{post.user} in
+                <span className="text-black">@{post.user}</span> in
               </div>
               <div className="font-bold mr-[5px] text-[#94a3b8]">
                 {post.programmingLanguage}
               </div>
-              <div className={styles.time}>
-                Today <span style={{ color: 'black' }}>at</span> {readableTime}
+              <div className="font-bold mr-[5px] text-[#94a3b8]">
+                Today <span className="text-black">at</span> {readableTime}
               </div>
             </div>
 
