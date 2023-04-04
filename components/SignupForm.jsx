@@ -112,7 +112,7 @@ export default function SignupForm() {
         'container flex flex-col items-center justify-center ml-2 md:w-1/2 gap-[30px] md:h-[75vh] py-[50px] md:pt-[100px]'
       }
     >
-      <div className={styles.header}>
+      <div className="flex flex-col text-center items-center">
         <div className="bg-[#043873] p-2 pr-5 rounded mb-4">
           <Image
             className={styles.logoStyle}
