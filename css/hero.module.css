@@ -1,6 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
 
-.mainStyle {
+/* .mainStyle {
   background-color: #043873;
   padding-top: 150px;
   padding-bottom: 100px;
@@ -15,46 +14,46 @@
   flex-direction: column;
   gap: 20px;
   width: 85%;
-}
+} */
 
-.waveyImage {
+/* .waveyImage {
   width: 100%;
   object-fit: cover;
-}
+} */
 
-.textContainer {
+/* .textContainer {
   display: flex;
   flex-direction: column;
   justify-content: center;
   gap: 10px;
-}
+} */
 
-.landingPageImageStyle {
+/* .landingPageImageStyle {
   width: 100%;
   height: auto;
-}
+} */
 
-.title {
+/* .title {
   font-size: 30px;
   font-weight: 700;
   color: #fff;
   text-align: center;
-}
-
+} */
+/* 
 .subtitle {
   font-size: 16px;
   font-weight: 400;
   color: #fff;
   text-align: center;
   font-family: Quicksand;
-}
+} */
 
-.Button {
+/* .Button {
   width: 250px;
   margin: 0 auto;
-}
+} */
 
-@media screen and (min-width: 768px) {
+/* @media screen and (min-width: 768px) {
   .mainStyle {
     padding-top: 220px;
     padding-bottom: 210px;
@@ -71,27 +70,27 @@
   .imageContainer {
     position: relative;
     bottom: 170px;
-  }
+  } */
 
-  .overlayContainer {
+  /* .overlayContainer {
     gap: 40px;
     flex-direction: row;
     justify-content: space-between;
     height: 50vh;
-  }
+  } */
 
-  .title {
+  /* .title {
     font-size: 50px;
     text-align: left;
-  }
+  } */
 
-  .subtitle {
+  /* .subtitle {
     font-size: 16px;
     text-align: left;
-  }
+  } */
 
-  .Button {
+  /* .Button {
     width: 250px;
     margin: 0;
-  }
+  } */
 }
