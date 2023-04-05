@@ -50,12 +50,12 @@
   align-self: flex-start;
 } */
 
-.details {
+/* .details {
   display: flex;
   height: 100%;
   flex-direction: column;
   gap: 30px;
-}
+} */
 
 /* .mainContainer {
   display: flex;
