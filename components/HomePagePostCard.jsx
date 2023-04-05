@@ -54,9 +54,9 @@ export default function HomePagePostCard({ post, replyCountByPostId }) {
                 onClick={() => {
                   router.push(`/users/${post.user}`);
                 }}
-                className="font-bold mx-[5px] text-[#94a3b8] cursor-pointer"
+                className="font-bold mx-[5px] cursor-pointer"
               >
-                <span className="text-black">@{post.user}</span> in
+                <span className="text-[#4f9cf9]">@{post.user}</span> in
               </div>
               <div className="font-bold mr-[5px] text-[#94a3b8]">
                 {post.programmingLanguage}
