@@ -3,40 +3,19 @@ import { FaHtml5 } from 'react-icons/fa';
 import { FaCss3Alt } from 'react-icons/fa';
 import { FaPython } from 'react-icons/fa';
 import { FaJava } from 'react-icons/fa';
-import { FaHashtag } from 'react-icons/fa';
 import { FaPhp } from 'react-icons/fa';
 import { FaRuby } from 'react-icons/fa';
 import { FaSwift } from 'react-icons/fa';
-import { FaReact } from 'react-icons/fa';
 import { FaRust } from 'react-icons/fa';
-import { FaKotlin } from 'react-icons/fa';
-import { FaScala } from 'react-icons/fa';
-import { FaDart } from 'react-icons/fa';
-import { FaLua } from 'react-icons/fa';
-import { FaCc } from 'react-icons/fa';
-import { FaC } from 'react-icons/fa';
 import { FaRProject } from 'react-icons/fa';
-import { DiFsharp } from 'react-icons/di';
 import {
   FaPerl,
   FaDatabase,
   FaApple,
-  FaHaskell,
-  FaPhoenixFramework,
-  FaGroovy,
   FaTerminal,
   FaMicrosoft,
-  FaHammer,
-  FaMatlab,
-  FaScratch,
   FaCalculator,
-  FaFortAwesomeAlt,
-  FaInfinity,
-  FaBrain,
-  FaSmile,
-  FaProjectDiagram,
   FaCode,
-  FaTypo3,
   FaLambda,
   FaHeart,
   FaPuzzlePiece,
@@ -45,45 +24,14 @@ import {
   FaLeaf,
   FaServer,
   FaGem,
-  FaFoursquare,
 } from 'react-icons/fa';
-import { FaCss3 } from 'react-icons/fa';
 import { FaVuejs } from 'react-icons/fa';
 import { FaNodeJs } from 'react-icons/fa';
 import { FaAngular } from 'react-icons/fa';
-import { FaAndroid } from 'react-icons/fa';
-import { FaWindows } from 'react-icons/fa';
-import { FaLinux } from 'react-icons/fa';
-
-import { FaSql } from 'react-icons/fa';
-import { FaObjectiveC } from 'react-icons/fa';
-import { FaElixir } from 'react-icons/fa';
-import { FaShell } from 'react-icons/fa';
-import { FaVisualstudio } from 'react-icons/fa';
-import { FaAssembly } from 'react-icons/fa';
-import { FaCobol } from 'react-icons/fa';
-import { FaFortAwesome } from 'react-icons/fa';
-import { FaLisp } from 'react-icons/fa';
-import { FaProlog } from 'react-icons/fa';
-import { FaSmalltalk } from 'react-icons/fa';
-import { FaBtc } from 'react-icons/fa';
-import { FaEthereum } from 'react-icons/fa';
 import { FaErlang } from 'react-icons/fa';
-import { FaFsharp } from 'react-icons/fa';
 import { FaClojure } from 'react-icons/fa';
-import { FaDotnet } from 'react-icons/fa';
 import { FaEmber } from 'react-icons/fa';
-import { FaDjango } from 'react-icons/fa';
-import { FaFlask } from 'react-icons/fa';
-import { FaLaravel } from 'react-icons/fa';
-import { FaSpring } from 'react-icons/fa';
-import { FaReacteurope } from 'react-icons/fa';
-import { FaReactnative } from 'react-icons/fa';
-import { FaSwiftui } from 'react-icons/fa';
-import { FaPlSql } from 'react-icons/fa';
-import { FaPerl6 } from 'react-icons/fa';
-import { FaRacket } from 'react-icons/fa';
-import { FaOcaml } from 'react-icons/fa';
+import { DiFsharp } from 'react-icons/di';
 import {
   SiC,
   SiCplusplus,
@@ -92,14 +40,9 @@ import {
   SiLua,
   SiReact,
   SiScala,
-  SiScheme,
   SiTypescript,
+  SiKotlin,
 } from 'react-icons/si';
-import { FaPencilAlt } from 'react-icons/fa';
-import { FaFish } from 'react-icons/fa';
-import { FaSquirrel } from 'react-icons/fa';
-
-import { SiKotlin, siCsharp } from 'react-icons/si';
 
 const languages = {
   javascript: <FaJsSquare size={64} color="#f7df1e" />,
