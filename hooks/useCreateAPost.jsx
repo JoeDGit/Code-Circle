@@ -8,7 +8,8 @@ export const createAPost = (
   postTitle,
   projectDescription,
   programmingLanguage,
-  timeToCode,
+  dailyAvailability,
+  weekDayAvailability,
   timeZone
 ) => {
   const newDate = new Date();
@@ -19,7 +20,8 @@ export const createAPost = (
       postTitle,
       projectDescription,
       programmingLanguage,
-      timeToCode,
+      dailyAvailability,
+      weekDayAvailability,
       timeZone,
       postTime: newDate.getTime(),
     }).then((response) => {
