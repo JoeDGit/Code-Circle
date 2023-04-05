@@ -94,7 +94,7 @@ export default function CreateAPost() {
           className="w-11/12 md:w-1/2 h-[100px] mx-auto border-2 border-[#eaeaea] rounded-[10px] p-5 bg-[#ffffff] my-5 drop-shadow resize-none"
         />
 
-        <label className={styles.inputContainer}>
+        <label className="flex flex-col items-center justify-center w-full gap-1">
           Choose the main language for the project :
           <LanguageSelect
             customStyle={'md:w-1/2 w-5/6'}
@@ -103,7 +103,7 @@ export default function CreateAPost() {
           />
         </label>
 
-        <label className={styles.inputContainer}>
+        <label className="flex flex-col items-center justify-center w-full gap-1">
           Choose a time to code :
           <input
             className={styles.input}
