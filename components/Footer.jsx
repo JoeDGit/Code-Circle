@@ -1,14 +1,14 @@
-import React from "react";
-import styles from "../css/footer.module.css";
-import Image from "next/image";
-import logo from "../images/Logo.svg";
-import Button from "./Button";
-import arrow from "../images/arrow.svg";
-import { BsFacebook, BsInstagram, BsTwitter } from "react-icons/bs";
+import React from 'react';
+import styles from '../css/footer.module.css';
+import Image from 'next/image';
+import logo from '../images/Logo.svg';
+import Button from './Button';
+import arrow from '../images/arrow.svg';
+import { BsFacebook, BsInstagram, BsTwitter } from 'react-icons/bs';
 
 export default function Footer() {
   return (
-    <footer className={styles.footer}>
+    <footer className="w-full bg-[#043873] text-[#ffffff] text-center static p-5 mt-[83px] md:py-10 md:px-10">
       <div className={styles.container}>
         <div className={styles.logo}>
           <Image className={styles.logoStyle} alt="logo" src={logo} />
