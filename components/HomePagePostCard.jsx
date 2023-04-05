@@ -2,7 +2,7 @@ import React from 'react';
 import styles from '../css/posts.module.css';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
-import { BiMessageRounded } from 'react-icons/bi';
+import { GoCommentDiscussion } from 'react-icons/go';
 import profilePlaceholder from '../images/profilePlaceholder.png';
 import moment from 'moment/moment';
 import { useAuthContext } from '../hooks/useAuthContext';
@@ -93,7 +93,7 @@ export default function HomePagePostCard({ post, replyCountByPostId }) {
       </div>
       <div className={styles.replies}>
         <div>
-          <BiMessageRounded className={styles.messageIcon} />
+          <GoCommentDiscussion className={styles.messageIcon} />
         </div>
         <div>{replyCountObject[post.postId]}</div>
       </div>
