@@ -93,6 +93,7 @@ import {
   SiReact,
   SiScala,
   SiScheme,
+  SiTypescript,
 } from 'react-icons/si';
 import { FaPencilAlt } from 'react-icons/fa';
 import { FaFish } from 'react-icons/fa';
@@ -110,7 +111,7 @@ const languages = {
   php: <FaPhp size={64} color="#8892bf" />,
   ruby: <FaRuby size={64} color="#cc342d" />,
   swift: <FaSwift size={64} color="#f05138" />,
-  typescript: <FaReact size={64} color="#007acc" />,
+  typescript: <SiTypescript size={64} color="#007acc" />,
   rust: <FaRust size={64} color="#000000" />,
   kotlin: <SiKotlin size={64} color="#7f52ff" />,
   scala: <SiScala size={64} color="#dc322f" />,
