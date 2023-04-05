@@ -116,7 +116,7 @@ const languages = {
   scala: <SiScala size={64} color="#dc322f" />,
   dart: <SiDart size={64} color="#00b4ab" />,
   lua: <SiLua size={64} color="#2c2d72" />,
-  cplus: <SiCplusplus size={64} color="#f34b7d" />,
+  'c++': <SiCplusplus size={64} color="#f34b7d" />,
   c: <SiC size={64} color="#a8b9cc" />,
   r: <FaRProject size={64} color="#276dc3" />,
   perl: <FaPerl size={64} color="#0093B2" />,
