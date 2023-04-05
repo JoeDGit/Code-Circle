@@ -1,10 +1,11 @@
-import { useState } from "react";
-import { createAPost } from "../hooks/useCreateAPost";
-import { useRouter } from "next/router";
-import { useAuthContext } from "../hooks/useAuthContext";
-import styles from "../css/createPost.module.css";
-import { motion } from "framer-motion";
-import LoaderButton from "../components/LoaderButton";
+import { useState } from 'react';
+import { createAPost } from '../hooks/useCreateAPost';
+import { useRouter } from 'next/router';
+import { useAuthContext } from '../hooks/useAuthContext';
+import styles from '../css/createPost.module.css';
+import { motion } from 'framer-motion';
+import LoaderButton from '../components/LoaderButton';
+import LanguageSelect from '../components/LanguageSelect';
 
 const buttonVariants = {
   hover: {
@@ -14,16 +15,16 @@ const buttonVariants = {
     scale: 0.99,
   },
 };
-import checkLoggedIn from "../hooks/checkLoggedIn";
+import checkLoggedIn from '../hooks/checkLoggedIn';
 
 export default function CreateAPost() {
   const { user } = useAuthContext();
 
-  const [postTitleInput, setPostTitleinput] = useState("");
-  const [projectDescription, setProjectDescription] = useState("");
-  const [programmingLanguage, setProgrammingLanguage] = useState("HTML");
-  const [timeToCode, setTimeToCode] = useState("");
-  const [timeZone, setTimeZone] = useState("GMT");
+  const [postTitleInput, setPostTitleinput] = useState('');
+  const [projectDescription, setProjectDescription] = useState('');
+  const [programmingLanguage, setProgrammingLanguage] = useState('HTML');
+  const [timeToCode, setTimeToCode] = useState('');
+  const [timeZone, setTimeZone] = useState('GMT');
   const [loading, setLoading] = useState(false);
   checkLoggedIn();
 
@@ -42,7 +43,7 @@ export default function CreateAPost() {
     );
     setLoading(true);
     setTimeout(() => {
-      router.push("/home");
+      router.push('/home');
     }, 1500);
   }
 
@@ -91,23 +92,11 @@ export default function CreateAPost() {
         />
 
         <label className={styles.inputContainer}>
-          Choose a programming language :
-          <select
-            name="programming-languages"
-            onChange={handleOnChangeLanguage}
-            className={styles.select}
-          >
-            <option value="HTML">HTML</option>
-            <option value="CSS">CSS</option>
-            <option value="JavaScript">JavaScript</option>
-            <option value="Java">Java</option>
-            <option value="PHP">PHP</option>
-            <option value="C#">C#</option>
-            <option value="Python">Python</option>
-            <option value="Go">Go</option>
-            <option value="Swift">Swift</option>
-            <option value="Ruby">Ruby</option>
-          </select>
+          Choose the main language for the project :
+          <LanguageSelect
+            selectedLanguages={programmingLanguage}
+            setSelectedLanguages={setProgrammingLanguage}
+          />
         </label>
 
         <label className={styles.inputContainer}>
@@ -141,7 +130,7 @@ export default function CreateAPost() {
           whileTap="tap"
           className={styles.button}
         >
-          {loading ? <LoaderButton /> : "Add Post"}
+          {loading ? <LoaderButton /> : 'Add Post'}
         </motion.button>
       </form>
     </div>
