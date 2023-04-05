@@ -60,7 +60,7 @@ export default function SinglePost() {
         onClick={() => {
           router.push('/home');
         }}
-        className="flex self-start items-center gap-2 bg-[#043873] rounded px-2 pr-3 cursor-pointer ml-4"
+        className="flex self-start items-center gap-2 bg-[#4f9cf9] rounded px-2 pr-3 cursor-pointer ml-4"
       >
         <IoReturnUpBackSharp color={'white'} size={20} />
         <div className="text-white font-sans">Back to all posts</div>
@@ -95,7 +95,7 @@ export default function SinglePost() {
                 onClick={() => {
                   router.push(`/users/${postToRender[0]?.user}`);
                 }}
-                className="text-[#043873] font-bold text-xl"
+                className="text-[#4f9cf9] font-bold text-xl"
               >
                 @{postToRender[0]?.user}
               </div>
