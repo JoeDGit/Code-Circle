@@ -145,6 +145,7 @@ export default function SignupForm() {
           required
         />
         <LanguageSelect
+          customStyle={'w-full'}
           isMultiEnabled={true}
           selectedLanguages={selectedLanguages}
           setSelectedLanguages={setSelectedLanguages}
