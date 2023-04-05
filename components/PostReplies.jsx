@@ -22,54 +22,52 @@ export default function PostReplies({ pid, replies, handleDeleteReply }) {
     return reply.postId === pid;
   });
 
-  return repliesToRender?.length ? (
+  return (
     <div>
-      {repliesToRender.map((reply, i) => {
-        return (
-          <div key={reply.replyId} className={styles.container}>
-            <div className={styles.profileContainer}>
+      {repliesToRender?.length ? (
+        repliesToRender.map((reply) => (
+          <div key={reply.replyId} className="flex flex-col w-full pb-12">
+            <div className="flex items-start gap-4 border border-[#eaeaea] p-5">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={user.photoURL}
-                alt="profile "
-                className={styles.profileImage}
-                onClick={() => {
-                  router.push(`/users/${user?.displayName}`);
-                }}
+                alt="profile"
+                className="rounded-full h-16 w-16 cursor-pointer"
+                onClick={() => router.push(`/users/${user?.displayName}`)}
               />
-              <div>
-                <div className={styles.usernameContainer}>
-                  <div
-                    className={styles.username}
-                    onClick={() => {
-                      router.push(`/users/${reply.user}`);
-                    }}
+              <div className="flex-1">
+                <div className="flex items-center">
+                  <span
+                    className="text-blue-500 cursor-pointer hover:underline"
+                    onClick={() => router.push(`/users/${reply.user}`)}
                   >
                     {reply.user}
-                  </div>
-                  <div>{moment(reply.createdAt).fromNow()}</div>
+                  </span>
+                  <span className="text-gray-500 ml-2">
+                    {moment(reply.createdAt).fromNow()}
+                  </span>
                 </div>
-                <div className={styles.replyContainer}>
+                <div className="mt-2">
                   <div className={styles.reply}>{reply.message}</div>
+                  {reply?.user === user?.displayName && (
+                    <motion.button
+                      variants={buttonVariants}
+                      whileHover="hover"
+                      whileTap="tap"
+                      className="text-white w-30 border-none rounded-lg mt-5 cursor-pointer p-1.5 bg-[#4f9cf9]"
+                      onClick={() => handleDeleteReply(reply.replyId)}
+                    >
+                      Delete
+                    </motion.button>
+                  )}
                 </div>
-                {reply?.user === user?.displayName ? (
-                  <motion.button
-                    variants={buttonVariants}
-                    whileHover="hover"
-                    whileTap="tap"
-                    className={styles.deleteButton}
-                    onClick={() => handleDeleteReply(reply.replyId)}
-                  >
-                    Delete
-                  </motion.button>
-                ) : null}
               </div>
             </div>
           </div>
-        );
-      })}
+        ))
+      ) : (
+        <div className="text-gray-500">No replies yet...</div>
+      )}
     </div>
-  ) : (
-    <div>No replies yet...</div>
   );
 }
