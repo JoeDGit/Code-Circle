@@ -40,9 +40,9 @@ export default function CreateAPost() {
   ];
 
   const timesOfDay = [
-    'Morning (6am - 12pm)',
-    'Afternoon (12pm - 6pm)',
-    'Evening (6pm - 12am)',
+    'Mornings (6am - 12pm)',
+    'Afternoons (12pm - 6pm)',
+    'Evenings (6pm - 12am)',
     'Night (12am - 6am)',
     'Anytime (24/7)',
     'Flexible (varying availability)',
