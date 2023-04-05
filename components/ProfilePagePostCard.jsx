@@ -14,7 +14,8 @@ export default function ProfilePagePostCard({ props, userName }) {
     postTitle,
     programmingLanguage,
     projectDescription,
-    timeToCode,
+    weekDayAvailability,
+    dailyAvailability,
     timeZone,
     user,
     photoURL,
@@ -28,8 +29,27 @@ export default function ProfilePagePostCard({ props, userName }) {
     useState(projectDescription);
   const [editProgrammingLanguage, setEditProgrammingLanguage] =
     useState(programmingLanguage);
-  const [editTimeToCode, setEditTimeToCode] = useState(timeToCode);
+  const [editWeekDayAvailability, setEditWeekDayAvailability] =
+    useState(weekDayAvailability);
+  const [editDailyAvailability, setEditDailyAvailability] =
+    useState(dailyAvailability);
   const [editTimeZone, setEditTimeZone] = useState(timeZone);
+
+  const weeklyAvailability = [
+    'Weekdays (Mon-Fri)',
+    'Weekends (Sat-Sun)',
+    'Anytime',
+    'Flexible (varying availability)',
+  ];
+
+  const timesOfDay = [
+    'Mornings (6am - 12pm)',
+    'Afternoons (12pm - 6pm)',
+    'Evenings (6pm - 12am)',
+    'Night (12am - 6am)',
+    'Anytime (24/7)',
+    'Flexible (varying availability)',
+  ];
 
   const router = useRouter();
 
@@ -46,7 +66,8 @@ export default function ProfilePagePostCard({ props, userName }) {
       postId,
       editProjectDescription,
       editProgrammingLanguage,
-      editTimeToCode,
+      editDailyAvailability,
+      editWeekDayAvailability,
       editTimeZone
     );
     setIsPostBeingEdited(false);
@@ -69,11 +90,6 @@ export default function ProfilePagePostCard({ props, userName }) {
   function OnChangeEditLanguage(event) {
     setEditProgrammingLanguage(event.target.value);
   }
-
-  function onChangeTimeToCode(event) {
-    setEditTimeToCode(event.target.value);
-  }
-
   function OnChangeTimeZone(event) {
     setEditTimeZone(event.target.value);
   }
@@ -110,15 +126,32 @@ export default function ProfilePagePostCard({ props, userName }) {
 
         {isPostBeingEdited ? (
           <label>
-            Choose a time to code :
-            <input
-              type="datetime-local"
-              name="meeting-time"
-              onChange={onChangeTimeToCode}
-            />
+            Choose availability :
+            <select
+              value={weekDayAvailability}
+              onChange={(e) => setEditWeekDayAvailability(e.target.value)}
+              className="border p-2"
+            >
+              {weeklyAvailability.map((availabilityOption) => {
+                return (
+                  <option key={availabilityOption}>{availabilityOption}</option>
+                );
+              })}
+            </select>
+            <select
+              className="border p-2"
+              value={dailyAvailability}
+              onChange={(e) => setEditDailyAvailability(e.target.value)}
+            >
+              {timesOfDay.map((availableTime) => {
+                return <option key={availableTime}>{availableTime}</option>;
+              })}
+            </select>
           </label>
         ) : (
-          <div>Time to code: {editTimeToCode.replace('T', ' ')}</div>
+          <div>
+            Availability: {dailyAvailability} {weekDayAvailability}
+          </div>
         )}
 
         <br />
