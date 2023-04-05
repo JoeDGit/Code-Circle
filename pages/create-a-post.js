@@ -94,6 +94,7 @@ export default function CreateAPost() {
         <label className={styles.inputContainer}>
           Choose the main language for the project :
           <LanguageSelect
+            customStyle={'md:w-1/2 w-5/6'}
             selectedLanguages={programmingLanguage}
             setSelectedLanguages={setProgrammingLanguage}
           />
