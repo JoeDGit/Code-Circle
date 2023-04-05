@@ -112,20 +112,21 @@ export default function SinglePost() {
                 <div className="text-3xl font-bold text-sans mb-5 mt-2">
                   {postToRender[0]?.postTitle}
                 </div>
-                <div className={styles.description}>
+                <div className="text-lg font-sans mb-2.5 mt-5">
                   {postToRender[0]?.projectDescription}
                 </div>
               </div>
               <div>
-                <div>
+                <div className="text-[14px]">
                   Availability: {postToRender[0]?.weekDayAvailability}{' '}
                   {postToRender[0]?.dailyAvailability}
                 </div>
-                <div>Time zone: {postToRender[0]?.timeZone}</div>
+                <div className="text-[14px]">
+                  Time zone: {postToRender[0]?.timeZone}
+                </div>
               </div>
             </div>
           </div>
-        
         </div>
         <PostReplyForm pid={pid} setReplies={setReplies} />
         <PostReplies
