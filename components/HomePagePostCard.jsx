@@ -26,7 +26,7 @@ export default function HomePagePostCard({ post, replyCountByPostId }) {
       }}
     >
       <div className="flex">
-        <div className="flex flex-col items-start w-full h-1/5 md:flex-row md:gap-[15px]">
+        <div className="flex flex-col  w-full h-1/5 md:flex-row md:gap-[15px]">
           <div className="flex justify-between md:block md:self-start w-full sm:w-auto">
             {post.photoURL ? (
               <Image
