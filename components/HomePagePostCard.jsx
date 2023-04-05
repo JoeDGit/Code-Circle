@@ -19,12 +19,7 @@ export default function HomePagePostCard({ post, replyCountByPostId }) {
   const readableDate = dateObject.fromNow();
 
   return (
-    <div
-      className="w-3/4 my-[10px] border border-[#eaeaea] rounded-[10px] p-5 drop-shadow-md cursor-pointer"
-      onClickCapture={() => {
-        router.push(`/posts/${post.postId}`);
-      }}
-    >
+    <div className="w-3/4 my-[10px] border border-[#eaeaea] rounded-[10px] p-5 drop-shadow-md ">
       <div className="flex">
         <div className="flex flex-col  w-full h-1/5 md:flex-row md:gap-[15px]">
           <div className="flex justify-between md:block md:self-start w-full sm:w-auto">
@@ -73,7 +68,14 @@ export default function HomePagePostCard({ post, replyCountByPostId }) {
 
             <div className={styles.details}>
               <div>
-                <div className={styles.title}>{post.postTitle}</div>
+                <div
+                  className="font-bold text-3xl mt-2.5 mb-1 cursor-pointer"
+                  onClickCapture={() => {
+                    router.push(`/posts/${post.postId}`);
+                  }}
+                >
+                  {post.postTitle}
+                </div>
               </div>
               <div>
                 <div>
