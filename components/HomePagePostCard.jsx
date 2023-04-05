@@ -94,7 +94,7 @@ export default function HomePagePostCard({ post, replyCountByPostId }) {
       <div className={styles.replies}>
         <div>
           <GoCommentDiscussion
-            className="text-2xl ml-1.2 text-[#52525b] cursor-pointer"
+            className="text-2xl ml-1.2 text-[#52525b] md:ml-[80px] cursor-pointer"
             onClick={() => {
               router.push(`/posts/${post.postId}#comments`);
             }}
