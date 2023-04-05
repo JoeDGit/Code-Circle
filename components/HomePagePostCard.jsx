@@ -93,7 +93,7 @@ export default function HomePagePostCard({ post, replyCountByPostId }) {
       </div>
       <div className={styles.replies}>
         <div>
-          <GoCommentDiscussion className={styles.messageIcon} />
+          <GoCommentDiscussion className="text-2xl ml-1.2 text-[#52525b] cursor-pointer" />
         </div>
         <div>{replyCountObject[post.postId]}</div>
       </div>

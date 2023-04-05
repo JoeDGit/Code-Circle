@@ -113,12 +113,13 @@
   margin-top: 20px;
 }
 
+/*
 .messageIcon {
   font-size: 30px;
   margin-left: 5px;
   margin-top: 10px;
   color: #52525b;
-}
+} */
 
 .replies {
   display: flex;
