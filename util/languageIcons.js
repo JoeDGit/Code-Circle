@@ -16,6 +16,7 @@ import { FaLua } from 'react-icons/fa';
 import { FaCc } from 'react-icons/fa';
 import { FaC } from 'react-icons/fa';
 import { FaRProject } from 'react-icons/fa';
+import { DiFsharp } from 'react-icons/di';
 import {
   FaPerl,
   FaDatabase,
@@ -83,10 +84,21 @@ import { FaPlSql } from 'react-icons/fa';
 import { FaPerl6 } from 'react-icons/fa';
 import { FaRacket } from 'react-icons/fa';
 import { FaOcaml } from 'react-icons/fa';
-import { SiScheme } from 'react-icons/si';
+import {
+  SiC,
+  SiCplusplus,
+  SiCsharp,
+  SiDart,
+  SiLua,
+  SiReact,
+  SiScala,
+  SiScheme,
+} from 'react-icons/si';
 import { FaPencilAlt } from 'react-icons/fa';
 import { FaFish } from 'react-icons/fa';
 import { FaSquirrel } from 'react-icons/fa';
+
+import { SiKotlin, siCsharp } from 'react-icons/si';
 
 const languages = {
   javascript: <FaJsSquare size={64} color="#f7df1e" />,
@@ -94,18 +106,18 @@ const languages = {
   css: <FaCss3Alt size={64} color="#1572b6" />,
   python: <FaPython size={64} color="#3776ab" />,
   java: <FaJava size={64} color="#007396" />,
-  csharp: <FaHashtag size={64} color="#239120" />,
+  csharp: <SiCsharp size={64} color="#239120" />,
   php: <FaPhp size={64} color="#8892bf" />,
   ruby: <FaRuby size={64} color="#cc342d" />,
   swift: <FaSwift size={64} color="#f05138" />,
   typescript: <FaReact size={64} color="#007acc" />,
   rust: <FaRust size={64} color="#000000" />,
-  kotlin: <FaKotlin size={64} color="#7f52ff" />,
-  scala: <FaScala size={64} color="#dc322f" />,
-  dart: <FaDart size={64} color="#00b4ab" />,
-  lua: <FaLua size={64} color="#2c2d72" />,
-  cplus: <FaCc size={64} color="#f34b7d" />,
-  c: <FaC size={64} color="#a8b9cc" />,
+  kotlin: <SiKotlin size={64} color="#7f52ff" />,
+  scala: <SiScala size={64} color="#dc322f" />,
+  dart: <SiDart size={64} color="#00b4ab" />,
+  lua: <SiLua size={64} color="#2c2d72" />,
+  cplus: <SiCplusplus size={64} color="#f34b7d" />,
+  c: <SiC size={64} color="#a8b9cc" />,
   r: <FaRProject size={64} color="#276dc3" />,
   perl: <FaPerl size={64} color="#0093B2" />,
   sql: <FaDatabase size={64} color="#F29111" />,
@@ -138,11 +150,11 @@ const languages = {
   flask: <FaMicrochip size={64} color="#000000" />,
   rails: <FaGem size={64} color="#cc0000" />,
   dotnet: <FaMicrosoft size={64} color="#5c2d91" />,
-  react: <FaReact size={64} color="#61dafb" />,
+  react: <SiReact size={64} color="#61dafb" />,
   ember: <FaEmber size={64} color="#f23819" />,
   clojure: <FaClojure size={64} color="#5881d8" />,
   erlang: <FaErlang size={64} color="#a90533" />,
-  fsharp: <FaFoursquare size={64} color="#1b82c7" />,
+  fsharp: <DiFsharp size={64} color="#1b82c7" />,
   ocaml: <FaCode size={64} color="#3be133" />,
   perl6: <FaPerl size={64} color="#000000" />,
   racket: <FaCode size={64} color="#960122" />,
