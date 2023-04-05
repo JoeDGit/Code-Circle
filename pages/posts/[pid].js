@@ -90,12 +90,12 @@ export default function SinglePost() {
             )}
           </div>
           <div className="self-start w-full h-full text-[10px] md:text-[16px]">
-            <div className="flex flex-col mt-4 md:mb-4 md:mt-0 md:ml-4">
+            <div className="flex flex-col  md:mb-4 md:mt-0 md:ml-4">
               <div
                 onClick={() => {
                   router.push(`/users/${postToRender[0]?.user}`);
                 }}
-                className="text-[#043873] font-bold"
+                className="text-[#043873] font-bold text-xl"
               >
                 @{postToRender[0]?.user}
               </div>
