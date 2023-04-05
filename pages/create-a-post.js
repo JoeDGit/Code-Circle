@@ -6,6 +6,7 @@ import styles from '../css/createPost.module.css';
 import { motion } from 'framer-motion';
 import LoaderButton from '../components/LoaderButton';
 import LanguageSelect from '../components/LanguageSelect';
+import checkLoggedIn from '../hooks/checkLoggedIn';
 
 const buttonVariants = {
   hover: {
@@ -15,20 +16,37 @@ const buttonVariants = {
     scale: 0.99,
   },
 };
-import checkLoggedIn from '../hooks/checkLoggedIn';
 
 export default function CreateAPost() {
   const { user } = useAuthContext();
 
   const [postTitleInput, setPostTitleinput] = useState('');
   const [projectDescription, setProjectDescription] = useState('');
-  const [programmingLanguage, setProgrammingLanguage] = useState('HTML');
-  const [timeToCode, setTimeToCode] = useState('');
+  const [programmingLanguage, setProgrammingLanguage] = useState('');
+  const [weekDayAvailability, setWeekDayAvailability] =
+    useState('Weekdays (Mon-Fri)');
+  const [dailyAvailability, setDailyAvailability] = useState(
+    'Flexible (varying availability)'
+  );
   const [timeZone, setTimeZone] = useState('GMT');
   const [loading, setLoading] = useState(false);
   checkLoggedIn();
-
   const router = useRouter();
+  const weeklyAvailability = [
+    'Weekdays (Mon-Fri)',
+    'Weekends (Sat-Sun)',
+    'Anytime',
+    'Flexible (varying availability)',
+  ];
+
+  const timesOfDay = [
+    'Morning (6am - 12pm)',
+    'Afternoon (12pm - 6pm)',
+    'Evening (6pm - 12am)',
+    'Night (12am - 6am)',
+    'Anytime (24/7)',
+    'Flexible (varying availability)',
+  ];
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -38,7 +56,8 @@ export default function CreateAPost() {
       postTitleInput,
       projectDescription,
       programmingLanguage,
-      timeToCode,
+      dailyAvailability,
+      weekDayAvailability,
       timeZone
     );
     setLoading(true);
@@ -55,16 +74,8 @@ export default function CreateAPost() {
     setProjectDescription(e.target.value);
   }
 
-  function handleOnChangeLanguage(e) {
-    setProgrammingLanguage(e.target.value);
-  }
-
   function handleOnChangeTimeZone(e) {
     setTimeZone(e.target.value);
-  }
-
-  function handleChooseTimeToCode(e) {
-    setTimeToCode(e.target.value);
   }
 
   return (
@@ -103,16 +114,30 @@ export default function CreateAPost() {
           />
         </label>
 
-        <label className="flex flex-col items-center justify-center w-full gap-1">
-          Choose a time to code :
-          <input
-            className={styles.input}
-            type="datetime-local"
-            name="meeting-time"
-            onChange={handleChooseTimeToCode}
-          />
+        <label className="flex flex-col items-center justify-center w-full gap-3">
+          Select when you&apos;re available to pair:
+          <select
+            value={weekDayAvailability}
+            onChange={(e) => setWeekDayAvailability(e.target.value)}
+            className="border p-2"
+          >
+            {weeklyAvailability.map((availabilityOption) => {
+              return (
+                <option key={availabilityOption}>{availabilityOption}</option>
+              );
+            })}
+          </select>
+          <select
+            className="border p-2"
+            value={dailyAvailability}
+            onChange={(e) => setDailyAvailability(e.target.value)}
+          >
+            {timesOfDay.map((availableTime) => {
+              return <option key={availableTime}>{availableTime}</option>;
+            })}
+          </select>
         </label>
-        <label className={styles.inputContainer}>
+        <label className="flex flex-col items-center justify-center w-full gap-1">
           Choose a time zone :
           <select
             name="Time-zone"
