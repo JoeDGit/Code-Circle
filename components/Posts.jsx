@@ -69,20 +69,7 @@ export default function Posts() {
   });
   useEffect(() => {
     getPosts(db).then((response) => {
-      const postsArray = response.map((post) => {
-        const newPost = {};
-        newPost.postId = post.postId;
-        newPost.user = post.user;
-        newPost.photoURL = post.photoURL;
-        newPost.postTitle = post.postTitle;
-        newPost.projectDescription = post.projectDescription;
-        newPost.programmingLanguage = post.programmingLanguage;
-        newPost.timeToCode = post.timeToCode.replace('T', ' ');
-        newPost.timeZone = post.timeZone;
-        newPost.postTime = post.postTime;
-        return newPost;
-      });
-      setPosts(postsArray);
+      setPosts(response);
       setIsLoading(false);
     });
   }, []);
