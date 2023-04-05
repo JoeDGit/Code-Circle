@@ -68,11 +68,14 @@ export default function CreateAPost() {
   }
 
   return (
-    <div className={styles.container}>
-      <h1>Create a Post</h1>
-      <form onSubmit={handleSubmit} className={styles.formContainer}>
+    <div className="flex flex-col items-center pt-[150px] pb-[50px]">
+      <h1 className="text-4xl mb-2">Create a Post</h1>
+      <form
+        onSubmit={handleSubmit}
+        className="flex flex-col w-3/4 mx-auto border border-[#eaeaea] rounded-[10px] py-[40px] bg-[#ffffff] drop-shadow items-center justify-center gap-5"
+      >
         <input
-          className={styles.input}
+          className="w-11/12 md:w-1/2 h-12 border border-[#dbdbdb] rounded-[15px] bg-[#fafafa] px-[10px] mb-[10px] text-[14px]"
           type="text"
           value={postTitleInput}
           onChange={HandlePostTitleInput}
