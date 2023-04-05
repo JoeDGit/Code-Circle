@@ -79,8 +79,8 @@ export default function HomePagePostCard({ post, replyCountByPostId }) {
               </div>
               <div>
                 <div>
-                  Time to code:{post.dailyAvailability}{' '}
-                  {post.weekDayAvailability}
+                  Availability: {post.weekDayAvailability}{' '}
+                  {post.dailyAvailability}{' '}
                 </div>
                 <div>Time zone: {post.timeZone}</div>
               </div>
