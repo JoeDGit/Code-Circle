@@ -54,7 +54,7 @@ export default function HomePagePostCard({ post, replyCountByPostId }) {
                 onClick={() => {
                   router.push(`/users/${post.user}`);
                 }}
-                className="font-bold mx-[5px] text-[#94a3b8]"
+                className="font-bold mx-[5px] text-[#94a3b8] cursor-pointer"
               >
                 <span className="text-black">@{post.user}</span> in
               </div>
@@ -78,10 +78,7 @@ export default function HomePagePostCard({ post, replyCountByPostId }) {
                 </div>
               </div>
               <div>
-                <div>
-                  Time to code: {moment(post.timeToCode).format('MMMM Do YYYY')}{' '}
-                  at {moment(post.timeToCode).format('HH:MM a')}
-                </div>
+                <div>Time to code: Mornings on Weekedays</div>
                 <div>Time zone: {post.timeZone}</div>
               </div>
             </div>
