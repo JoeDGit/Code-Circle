@@ -24,7 +24,7 @@ export default function LanguageSelect({
     : languageOptions.find((option) => option.value === selectedLanguages);
 
   return (
-    <div className={`mt-4 mb-4 w-full ${customStyle}`}>
+    <div className={`mt-4 mb-4 ${customStyle}`}>
       <Select
         id="language-select"
         isMulti={isMultiEnabled}
