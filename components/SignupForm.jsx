@@ -145,6 +145,7 @@ export default function SignupForm() {
           required
         />
         <LanguageSelect
+          isMultiEnabled={true}
           selectedLanguages={selectedLanguages}
           setSelectedLanguages={setSelectedLanguages}
         />
