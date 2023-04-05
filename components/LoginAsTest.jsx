@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import styles from '../css/login.module.css';
 import { useSignin } from '../hooks/useSignin';
 import { useRouter } from 'next/router';
+import Button from './Button';
 
 const buttonVariants = {
   hover: {
@@ -13,11 +14,9 @@ const buttonVariants = {
   },
 };
 
-export default function LoginAsTest() {
+export default function LoginAsTest({ nav }) {
   const { signin, error } = useSignin();
   let router = useRouter();
-  console.log(error);
-
   function redirect() {
     router.push('/home');
   }
@@ -26,6 +25,17 @@ export default function LoginAsTest() {
     e.preventDefault();
     await signin('testuser@test.com', 'testuser123').then(() => redirect());
   };
+
+  if (nav) {
+    return (
+      <Button
+        label="Login as test user"
+        type="secondary"
+        size="medium"
+        onClick={handleSubmit}
+      />
+    );
+  }
 
   return (
     <motion.button
