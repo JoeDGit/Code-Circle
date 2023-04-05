@@ -91,7 +91,7 @@ export default function CreateAPost() {
           required
           placeholder="Enter a description for your project"
           spellCheck="true"
-          className={styles.textarea}
+          className="w-11/12 md:w-1/2 h-[100px] mx-auto border-2 border-[#eaeaea] rounded-[10px] p-5 bg-[#ffffff] my-5 drop-shadow resize-none"
         />
 
         <label className={styles.inputContainer}>
