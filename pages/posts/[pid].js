@@ -9,7 +9,7 @@ import styles from '../../css/posts.module.css';
 import profilePlaceholder from '../../images/profilePlaceholder.png';
 import Image from 'next/image';
 import moment from 'moment/moment';
-import imagePlaceholder from '../../images/image-placeholder.svg';
+import { AiOutlineMail } from 'react-icons/ai';
 import { IoReturnUpBackSharp } from 'react-icons/io5';
 import checkLoggedIn from '../../hooks/checkLoggedIn';
 import { useAuthContext } from '../../hooks/useAuthContext';
@@ -99,11 +99,15 @@ export default function SinglePost() {
               >
                 @{postToRender[0]?.user}
               </div>
+
               <div className="font-bold">
                 in {postToRender[0]?.programmingLanguage}
               </div>
               <div className={styles.time}>
                 {moment.unix(postToRender[0]?.postTime).format('HH:MM a')}
+              </div>
+              <div className="text-2xl">
+                <AiOutlineMail />
               </div>
             </div>
 
