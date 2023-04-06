@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from "react";
-import styles from "../css/userProfile.module.css";
-import { collection, query, where, getDocs } from "firebase/firestore";
-import { db } from "../firebase/config";
-import Image from "next/image";
-import defaultAvatar from "../images/default-avatar.svg";
-import { TbMessage2 } from "react-icons/tb";
-import { AiOutlinePhone } from "react-icons/ai";
-import { useRouter } from "next/router";
-import { useAuthContext } from "../hooks/useAuthContext";
+import React, { useEffect, useState } from 'react';
+import styles from '../css/userProfile.module.css';
+import { collection, query, where, getDocs } from 'firebase/firestore';
+import { db } from '../firebase/config';
+import Image from 'next/image';
+import defaultAvatar from '../images/default-avatar.svg';
+import { TbMessage2 } from 'react-icons/tb';
+import { AiOutlineMail } from 'react-icons/ai';
+import { useRouter } from 'next/router';
+import { useAuthContext } from '../hooks/useAuthContext';
 
 export default function UserProfile({ userName }) {
   const [profilePageUser, setProfilePageUser] = useState({});
@@ -30,10 +30,10 @@ export default function UserProfile({ userName }) {
     if (!router.isReady || !userNameFromParams) return;
 
     async function getUser() {
-      const usersCol = collection(db, "users");
+      const usersCol = collection(db, 'users');
       const userQuery = query(
         usersCol,
-        where("displayname", "==", `${userNameFromParams}`)
+        where('displayname', '==', `${userNameFromParams}`)
       );
       const usersSnapshot = await getDocs(userQuery);
       const usersList = usersSnapshot.docs.map((doc) => doc.data());
@@ -57,12 +57,14 @@ export default function UserProfile({ userName }) {
     <main className={styles.profile}>
       <div className={styles.avatarAndNameContainer}>
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <Image src={defaultAvatar} alt="profile" className={styles.avatarStyle} />
+        <Image
+          src={defaultAvatar}
+          alt="profile"
+          className={styles.avatarStyle}
+        />
         <h2 className={styles.displayName}>{userNameFromParams}</h2>
         {isSomeoneElsesProfile ? (
-          
           <div className={styles.contactOtherUser}>
-            
             <button
               className={styles.messageButton}
               onClick={() =>
@@ -72,7 +74,7 @@ export default function UserProfile({ userName }) {
                 })
               }
             >
-              <TbMessage2 size={30} />
+              <AiOutlineMail size={26} />
             </button>
           </div>
         ) : null}
