@@ -4,7 +4,7 @@ import Image from 'next/image';
 import logo from '../images/Logo.svg';
 import Link from 'next/link';
 import defaultAvatar from '../images/default-avatar.svg';
-import { TbMessage2 } from 'react-icons/tb';
+import { AiOutlineMail } from 'react-icons/ai';
 import { useLogout } from '../hooks/useLogout';
 import { useRouter } from 'next/router';
 import { useAuthContext } from '../hooks/useAuthContext';
@@ -42,7 +42,7 @@ export default function LoggedInNav() {
 
       <div>Logged in {user.displayName}</div>
       <Link href="/conversations" className={styles.message_container}>
-        <TbMessage2 size={30} className={styles.messages} />{' '}
+        <AiOutlineMail size={28} className={styles.messages} />{' '}
         <span className={styles.messages}>Messages</span>
       </Link>
       <Button
@@ -94,7 +94,7 @@ export default function LoggedInNav() {
               />
             )}
             <Link href={'/conversations'}>
-              <TbMessage2 size={30} style={{ color: 'white' }} />{' '}
+              <AiOutlineMail size={28} style={{ color: 'white' }} />{' '}
             </Link>
             <div className={styles.username}>{user.displayName}</div>
           </div>
