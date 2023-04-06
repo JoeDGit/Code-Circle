@@ -7,6 +7,7 @@ import { storage } from '../firebase/config';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { useEffect, useState } from 'react';
 import { useAuthContext } from './useAuthContext';
+import { postUser } from '../hooks/postUser';
 
 const auth = getAuth();
 export const useSignup = () => {
@@ -15,7 +16,13 @@ export const useSignup = () => {
   const [isPending, setIsPending] = useState(null);
   const { dispatch } = useAuthContext();
 
-  const signup = async (email, password, displayName, thumbnail) => {
+  const signup = async (
+    email,
+    password,
+    displayName,
+    thumbnail,
+    selectedLanguages
+  ) => {
     setError(null);
     setIsPending(true);
     try {
@@ -37,6 +44,7 @@ export const useSignup = () => {
 
       // dispatch login action
       dispatch({ type: 'LOGIN', payload: res.user });
+      postUser(displayName, selectedLanguages, photoURL);
 
       if (!isCancelled) {
         setIsPending(false);

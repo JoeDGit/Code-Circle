@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import { useSignup } from '../hooks/useSignup';
-import { postUser } from '../hooks/postUser';
 import { useRouter } from 'next/router';
 import { motion } from 'framer-motion';
 import styles from '../css/login.module.css';
@@ -75,8 +74,7 @@ export default function SignupForm() {
       setErrorMessage('Please Upload a profile picture');
       return;
     }
-    postUser(displayNameInput, selectedLanguages);
-    signup(emailInput, passwordInput, displayNameInput, thumbnail);
+    signup(emailInput, passwordInput, displayNameInput, thumbnail, selectedLanguages);
   };
 
   const handleFileChange = (e) => {
