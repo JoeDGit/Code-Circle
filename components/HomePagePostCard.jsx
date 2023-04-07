@@ -44,7 +44,7 @@ export default function HomePagePostCard({ post, replyCountByPostId }) {
                 }}
               />
             )}
-            <div className="flex md:hidden self-end">
+            <div className="flex md:hidden self-end text-[40px]">
               {languageIcons[post.programmingLanguage.toLowerCase()]}
             </div>
           </div>
