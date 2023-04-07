@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import styles from '../css/userProfile.module.css';
 import { collection, query, where, getDocs } from 'firebase/firestore';
 import { db } from '../firebase/config';
 import Image from 'next/image';
 import defaultAvatar from '../images/default-avatar.svg';
-import { TbMessage2 } from 'react-icons/tb';
 import { AiOutlineMail } from 'react-icons/ai';
 import { useAuthContext } from '../hooks/useAuthContext';
 import Loader from './Loader';
@@ -59,9 +57,11 @@ export default function UserProfile({ userName, userNameFromParams }) {
       <div className="flex flex-col items-center">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <Image
-          src={defaultAvatar}
+          src={profilePageUser.avatarURL}
           alt="profile"
-          className="h-24 w-24 rounded-full "
+          width={100}
+          height={100}
+          className="rounded-full mb-2"
         />
         {isSomeoneElsesProfile ? (
           <div>
