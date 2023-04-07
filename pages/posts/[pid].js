@@ -95,7 +95,7 @@ export default function SinglePost() {
                 onClick={() => {
                   router.push(`/users/${postToRender[0]?.user}`);
                 }}
-                className="text-[#4f9cf9] font-bold text-xl"
+                className="text-[#4f9cf9] font-bold text-xl cursor-pointer w-fit"
               >
                 @{postToRender[0]?.user}
               </div>
@@ -106,7 +106,7 @@ export default function SinglePost() {
               <div className={styles.time}>
                 {moment.unix(postToRender[0]?.postTime).format('HH:MM a')}
               </div>
-              <div className="text-2xl">
+              <div className="text-2xl cursor-pointer w-fit">
                 <AiOutlineMail />
               </div>
             </div>
