@@ -43,6 +43,7 @@ import {
   SiTypescript,
   SiKotlin,
   SiFlask,
+  SiRuby,
 } from 'react-icons/si';
 
 const languages = {
@@ -53,7 +54,7 @@ const languages = {
   java: <FaJava color="#007396" />,
   csharp: <SiCsharp color="#239120" />,
   php: <FaPhp color="#8892bf" />,
-  ruby: <FaRuby color="#cc342d" />,
+  ruby: <SiRuby color="#cc342d" />,
   swift: <FaSwift color="#f05138" />,
   typescript: <SiTypescript color="#007acc" />,
   rust: <FaRust color="#000000" />,
