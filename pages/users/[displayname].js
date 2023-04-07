@@ -18,7 +18,6 @@ export default function OtherUserProfile() {
       <UserProfile
         userName={user?.displayName}
         userNameFromParams={userNameFromParams}
-        photoURL={user?.photoURL}
       />
       <PastPosts userName={user?.displayName} />
     </div>
