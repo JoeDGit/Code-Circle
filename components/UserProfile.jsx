@@ -80,14 +80,14 @@ export default function UserProfile({ userName, userNameFromParams }) {
         ) : null}
       </div>
       <div className="flex flex-col items-center">
-        <h3 className="text-3xl mb-3 underline underline-offset-4">
+        <h3 className="text-2xl mb-3 underline underline-offset-4">
           Languages known
         </h3>
-        <div className="flex text-sm gap-2">
+        <div className="flex gap-2 border p-4 drop-shadow-sm rounded-md">
           {profilePageUser?.techstack?.map((tech) => {
             return (
               <div className="flex flex-col items-center" key={tech}>
-                <div>{languages[tech]} </div>
+                <div className="text-3xl">{languages[tech]} </div>
                 <i>{tech}</i>
               </div>
             );
