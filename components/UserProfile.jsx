@@ -6,15 +6,16 @@ import Image from 'next/image';
 import defaultAvatar from '../images/default-avatar.svg';
 import { TbMessage2 } from 'react-icons/tb';
 import { AiOutlineMail } from 'react-icons/ai';
-import { useRouter } from 'next/router';
 import { useAuthContext } from '../hooks/useAuthContext';
+import Loader from './Loader';
+import { useRouter } from 'next/router';
+import languages from '../util/languageIcons';
 
-export default function UserProfile({ userName }) {
+export default function UserProfile({ userName, userNameFromParams }) {
   const [profilePageUser, setProfilePageUser] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const { user } = useAuthContext();
   const router = useRouter();
-  const userNameFromParams = router.query.displayname;
 
   let messageChannel;
 
@@ -27,7 +28,7 @@ export default function UserProfile({ userName }) {
 
   useEffect(() => {
     setIsLoading(true);
-    if (!router.isReady || !userNameFromParams) return;
+    if (!userNameFromParams) return;
 
     async function getUser() {
       const usersCol = collection(db, 'users');
@@ -48,25 +49,24 @@ export default function UserProfile({ userName }) {
       .catch((error) => {
         console.log(error);
       });
-  }, [router.isReady, userNameFromParams]);
+  }, [userNameFromParams]);
 
   const isSomeoneElsesProfile = userName !== userNameFromParams;
 
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading) return <Loader />;
   return (
-    <main className={styles.profile}>
-      <div className={styles.avatarAndNameContainer}>
+    <main className="w-4/5 border-2 py-4 pb-10 rounded-sm drop-shadow-md">
+      <div className="flex flex-col items-center">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <Image
           src={defaultAvatar}
           alt="profile"
-          className={styles.avatarStyle}
+          className="h-24 w-24 rounded-full "
         />
-        <h2 className={styles.displayName}>{userNameFromParams}</h2>
         {isSomeoneElsesProfile ? (
-          <div className={styles.contactOtherUser}>
+          <div>
             <button
-              className={styles.messageButton}
+              className="text-[#043873]"
               onClick={() =>
                 router.push({
                   pathname: `/message/${createChannel()}`,
@@ -79,11 +79,18 @@ export default function UserProfile({ userName }) {
           </div>
         ) : null}
       </div>
-      <div className={styles.techStack}>
-        <h3>TechStack</h3>
-        <div className={styles.techStack}>
+      <div className="flex flex-col items-center">
+        <h3 className="text-3xl mb-3 underline underline-offset-4">
+          Languages known
+        </h3>
+        <div className="flex text-sm gap-2">
           {profilePageUser?.techstack?.map((tech) => {
-            return <div key={tech}>{tech}</div>;
+            return (
+              <div className="flex flex-col items-center" key={tech}>
+                <div>{languages[tech]} </div>
+                <i>{tech}</i>
+              </div>
+            );
           })}
         </div>
       </div>
