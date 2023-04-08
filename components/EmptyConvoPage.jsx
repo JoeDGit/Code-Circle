@@ -3,8 +3,8 @@ import { BiSad } from 'react-icons/bi';
 
 export default function EmptyConvoPage() {
   return (
-    <div className={styles.emptyConvoContainer}>
-      <h1 className={styles.heading}>Conversations</h1>
+    <div className="flex flex-col items-center h-[100vh] pt-[130px]">
+      <h1 className="text-center">Conversations</h1>
       <h2>
         <em>No conversations yet</em>
       </h2>

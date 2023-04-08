@@ -46,10 +46,12 @@ export default function Conversations() {
   if (isLoading) return <Loader />;
   if (filteredConversations?.length < 1) return <EmptyConvoPage />;
   return (
-    <div className={styles.container}>
-      <h1 className={styles.heading}>Conversations</h1>
+    <div className="mt-40 h-[60vh]  md:items-center w-full">
+      <h1 className="text-center font-sans text-4xl font-bold mb-2">
+        Conversations
+      </h1>
 
-      <section className={styles.conversations}>
+      <section className="drop-shadow-lg">
         {Object.keys(grouped).map((item, i) => (
           <div
             key={i}
