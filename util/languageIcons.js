@@ -44,6 +44,7 @@ import {
   SiKotlin,
   SiFlask,
   SiRuby,
+  SiApachegroovy,
 } from 'react-icons/si';
 
 const languages = {
@@ -71,7 +72,7 @@ const languages = {
   objectivec: <FaApple color="#999999" />,
   haskell: <FaLambda color="#5D4F85" />,
   elixir: <FaHeart color="#6E4A7E" />,
-  groovy: <FaJava color="#4298B8" />,
+  groovy: <SiApachegroovy color="#4298B8" />,
   shell: <FaTerminal color="#89e051" />,
   visualbasic: <FaMicrosoft color="#0175C2" />,
   assembly: <FaMicrochip color="#007396" />,
