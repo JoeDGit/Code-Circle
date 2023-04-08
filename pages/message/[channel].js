@@ -19,9 +19,9 @@ export default function Message() {
   return (
     <div className="mx-2 md:mx-0 w-full mt-60 md:mt-0 md:flex">
       <FormSide
-        title={`Message ${router.query.secondUser}`}
-        description="
-Send a message to a fellow coder and explore the possibility of working together on coding projects."
+        title={`Chatting with ${router.query.secondUser}`}
+        paragraph1="
+        Please remember to keep all communication respectful and kind. Harassment, hate speech, or any form of discrimination will not be tolerated. Let's have a great conversation!"
       />
       <AblyChatComponent channelNum={channelNum} />
     </div>
