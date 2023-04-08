@@ -103,8 +103,8 @@ const AblyChatComponent = (props) => {
 
     return (
       <section key={index}>
-        <div className={styles.messages}>
-          <span data-author={author} className={styles.newMessage}>
+        <div>
+          <span data-author={author} className="">
             {message.name}: {message.data}
           </span>
         </div>
@@ -120,9 +120,12 @@ const AblyChatComponent = (props) => {
   ></div>;
 
   return (
-    <main className={styles.chatContainer}>
+    <main className="gap-10 flex flex-col md:justify-end md:items-start pl-1 p-5">
+      <div className="md:hidden text-2xl font-bold">
+        Chatting with {router.query.secondUser}
+      </div>
       <div>
-        <div className={styles.message}>
+        <div className="flex flex-col h-full w-full">
           <div>{previousMessages}</div>
           <div>{messages}</div>
         </div>
@@ -133,9 +136,12 @@ const AblyChatComponent = (props) => {
           }}
         ></div>
       </div>
-      <form onSubmit={handleFormSubmission} className={styles.form}>
+      <form
+        onSubmit={handleFormSubmission}
+        className="flex flex-col md:flex-row md:items-end gap-[20px]"
+      >
         <textarea
-          className={styles.textArea}
+          className="h-full w-[400px] px-4 py-4 resize-none text-lg"
           value={messageText}
           ref={(element) => {
             inputBox = element;
@@ -144,27 +150,29 @@ const AblyChatComponent = (props) => {
           onChange={(e) => setMessageText(e.target.value)}
           onKeyPress={handleKeyPress}
         ></textarea>
-        <motion.button
-          variants={buttonVariants}
-          whileHover="hover"
-          whileTap="tap"
-          type="submit"
-          disabled={messageTextIsEmpty}
-          className={styles.button}
-        >
-          Send
-        </motion.button>
-        <Link href="/video" target="_blank">
+        <div className="flex gap-2">
           <motion.button
             variants={buttonVariants}
             whileHover="hover"
             whileTap="tap"
-            type="button"
-            className={styles.button}
+            type="submit"
+            disabled={messageTextIsEmpty}
+            className="bg-[#4f9cf9] text-[#ffffff] border-none cursor-pointer text-lg py-5 px-10 rounded self-end"
           >
-            Video
+            Send
           </motion.button>
-        </Link>
+          <Link href="/video" target="_blank">
+            <motion.button
+              variants={buttonVariants}
+              whileHover="hover"
+              whileTap="tap"
+              type="button"
+              className="bg-[#4f9cf9] text-[#ffffff] border-none cursor-pointer text-lg py-5 px-10 rounded self-end"
+            >
+              Video
+            </motion.button>
+          </Link>
+        </div>
       </form>
     </main>
   );
