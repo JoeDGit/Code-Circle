@@ -14,6 +14,13 @@ export default function Layout({ children }) {
     router.pathname === '/reset-password'
   ) {
     return <div>{children}</div>;
+  } else if (router.pathname.startsWith('/message')) {
+    return (
+      <div>
+        {user ? <LoggedInNav /> : <LoggedOutNav />}
+        <div>{children}</div>
+      </div>
+    );
   } else if (router.pathname !== '/login') {
     return (
       <div>
