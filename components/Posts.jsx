@@ -76,41 +76,45 @@ export default function Posts() {
 
   if (!isLoading && posts.length === 0) {
     return (
-      <div className={styles.noResults}>
+      <div className="flex flex-col justify-center items-center w-[100vw]  h-[100vh]">
         <div
           onClick={() => {
             setSearchTerm('');
           }}
-          className={styles.searchAgain}
+          className="text-xl font-light font-sans text-[#52525b] mt-5 cursor-pointer"
         >
           {'< Search Again'}
         </div>
-        <div className={styles.title}>No Results Found</div>
+        <div className="text-3xl font-bold font-sans mb-5">
+          No Results Found
+        </div>
       </div>
     );
   } else {
     return (
-      <main className={styles.container}>
+      <main className="flex flex-col items-center pt-[150px]">
         {isLoading ? (
-          <div className={styles.loader}>
+          <div>
             <Loader />
           </div>
         ) : (
-          <div className={styles.header}>
-            <div className={styles.hotContainer}>
-              <FaHotjar className={styles.hot} /> Hot
+          <div className="flex flex-col md:flex-row gap-5 justify-between items-center mb-5 w-11/12 md:w-3/4 bg-white py-2.5 px-8 rounded-[15px] drop-shadow border border-[#eaeaea]">
+            <div className="flex gap-20 ">
+              <div className="flex items-center gap-2 cursor-pointer">
+                <FaHotjar className="text-[#fb8c00] text-4xl" /> Hot
+              </div>
+              <div className="flex items-center gap-2 cursor-pointer">
+                <FaSort className="text-[#4f9cf9] text-4xl" /> Sort
+              </div>
             </div>
-            <div className={styles.sortContainer}>
-              <FaSort className={styles.sort} /> Sort
-            </div>
-            <form className={styles.form}>
+            <form className="w-full md:w-2/5">
               <input
                 autoFocus
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 type="search"
                 placeholder="Search Posts"
-                className={styles.input}
+                className="w-full h-full border-2 border-[#eaeaea] text-[16px] font-sans font-light py-2.5 px-5 rounded-[15px]"
                 required
               />
             </form>
