@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
-
 import { getConversations } from '../hooks/getConversations';
 import { useAuthContext } from '../hooks/useAuthContext';
-
 import ConversationCard from '../components/ConversationCard';
 import EmptyConvoPage from '../components/EmptyConvoPage';
-
 import styles from '../css/conversations.module.css';
+import Loader from '../components/Loader';
 
 export default function Conversations() {
   const [conversations, setConversations] = useState([]);
@@ -44,7 +42,7 @@ export default function Conversations() {
     }
   });
 
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading) return <Loader />;
   if (filteredConversations?.length < 1) return <EmptyConvoPage />;
   return (
     <div className={styles.container}>
@@ -73,4 +71,3 @@ export default function Conversations() {
     </div>
   );
 }
-
