@@ -6,6 +6,7 @@ import deleteAPost from '../hooks/deleteAPost';
 import editAPost from '../hooks/editAPost';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
+import LanguageSelect from './LanguageSelect';
 
 export default function ProfilePagePostCard({ props, userName }) {
   const {
@@ -102,21 +103,10 @@ export default function ProfilePagePostCard({ props, userName }) {
         {isPostBeingEdited ? (
           <label>
             Update programming language:
-            <select
-              name="programming-languages"
-              onChange={OnChangeEditLanguage}
-            >
-              <option value="HTML">HTML</option>
-              <option value="CSS">CSS</option>
-              <option value="JavaScript">JavaScript</option>
-              <option value="Java">Java</option>
-              <option value="PHP">PHP</option>
-              <option value="C#">C#</option>
-              <option value="Python">Python</option>
-              <option value="Go">Go</option>
-              <option value="Swift">Swift</option>
-              <option value="Ruby">Ruby</option>
-            </select>
+            <LanguageSelect
+              selectedLanguages={editProgrammingLanguage}
+              setSelectedLanguages={setEditProgrammingLanguage}
+            />
           </label>
         ) : (
           <div>Language: {editProgrammingLanguage}</div>
