@@ -1,18 +1,20 @@
-import { getDocs, collection } from "firebase/firestore";
+import { getDocs, collection, query, where, orderBy } from 'firebase/firestore';
+import { db } from '../firebase/config';
 
-import { db } from "../firebase/config";
-
-export async function getConversations() {
-  const conversationsCol = collection(db, "messages");
-  const conversationsSnapshot = await getDocs(conversationsCol);
-
-  const conversationsList = conversationsSnapshot.docs
-    .map((doc) => {
-      return {
-        ...doc.data(),
-        createdAt: new Date(doc._document.createTime.timestamp.seconds * 1000),
-      };
-    })
-    .sort((a, b) => b.createdAt - a.createdAt);
+export async function getConversations(userDisplayName) {
+  const conversationsCol = collection(db, 'messages');
+  const recipientQuery = query(
+    conversationsCol,
+    where('recipient', '==', userDisplayName),
+    orderBy('time', 'desc')
+  );
+  const conversationsSnapshot = await getDocs(recipientQuery);
+  
+  const conversationsList = conversationsSnapshot.docs.map((doc) => {
+    return {
+      ...doc.data(),
+      createdAt: new Date(doc._document.createTime.timestamp.seconds * 1000),
+    };
+  });
   return conversationsList;
 }

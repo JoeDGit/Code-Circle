@@ -10,15 +10,16 @@ import Loader from '../components/Loader';
 export default function Conversations() {
   const [conversations, setConversations] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-
   const { user } = useAuthContext();
 
   useEffect(() => {
-    getConversations().then((response) => {
-      setConversations(response);
-      setIsLoading(false);
-    });
-  }, []);
+    if (user) {
+      getConversations(user.displayName).then((response) => {
+        setConversations(response);
+        setIsLoading(false);
+      });
+    }
+  }, [user]);
 
   let router = useRouter();
 
