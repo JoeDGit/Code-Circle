@@ -1,8 +1,8 @@
-import React from "react";
-import defaultAvatar from "../images/default-avatar.svg";
-import Image from "next/image";
+import React from 'react';
+import defaultAvatar from '../images/default-avatar.svg';
+import Image from 'next/image';
 
-import styles from "../css/conversation-card.module.css";
+import styles from '../css/conversation-card.module.css';
 
 export default function ConversationCard({ user, date, message }) {
   return (
@@ -19,7 +19,7 @@ export default function ConversationCard({ user, date, message }) {
         <div className={styles.online}></div>
       </div>
 
-      <div className={styles["desc-contact"]}>
+      <div className={styles['desc-contact']}>
         <p className={styles.name}>
           <em>{user}</em>
         </p>
