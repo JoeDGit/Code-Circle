@@ -136,6 +136,7 @@ const AblyChatComponent = (props) => {
       <form onSubmit={handleFormSubmission} className={styles.form}>
         <textarea
           className={styles.textArea}
+          value={messageText}
           ref={(element) => {
             inputBox = element;
           }}
