@@ -21,7 +21,7 @@ To run Code Circle locally, you need to have Node.js and npm installed on your m
 2.  Install dependencies: `npm install`
 3.  Create a Firebase project and enable Firebase Authentication.
 4.  Create an Ably account and obtain an API key.
-5.  Create a `.env` file in the root directory with the following environment variables:
+5.  Create a `.env.local` file in the root directory with the following environment variables:
 
 ```
 REACT_APP_ABLY_API_KEY=<YOUR_ABLY_API_KEY>
