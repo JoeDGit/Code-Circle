@@ -19,7 +19,10 @@ export default function OtherUserProfile() {
         userName={user?.displayName}
         userNameFromParams={userNameFromParams}
       />
-      <PastPosts userName={user?.displayName} />
+      <PastPosts
+        userName={user?.displayName}
+        userNameFromParams={userNameFromParams}
+      />
     </div>
   );
 }

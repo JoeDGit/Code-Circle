@@ -5,12 +5,11 @@ import { useEffect, useState } from 'react';
 import ProfilePagePostCard from './ProfilePagePostCard';
 import { useRouter } from 'next/router';
 
-export default function PastPosts({ userName }) {
+export default function PastPosts({ userName, userNameFromParams }) {
   const [pastPosts, setPastPosts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   const router = useRouter();
-  const userNameFromParams = router.query.displayname;
 
   useEffect(() => {
     setIsLoading(true);
