@@ -10,7 +10,7 @@ Code Circle is a web application designed to connect programmers with each other
 
 - **Account creation:** Account creation on Code Circle is powered by Firebase Authentication. With Firebase Authentication, users can create an account with their email and password. The authentication process is secure and straightforward, ensuring that users' personal information is protected.
 - **Create and share posts:** You can create and share posts on Code Circle to discuss your programming ideas and find collaborators. Other users can view your posts and comment on them to start a conversation.
-- **Direct messaging with Ably:** Code Circle uses the Ably messaging platform to provide direct messaging between users. You can send messages to other users, create group chats, and receive real-time notifications when someone messages you.
+- **Direct messaging with Ably:** Code Circle uses the Ably messaging platform to provide direct messaging between users.
 - **Video chat and screen sharing with WebRTC:** Code Circle uses WebRTC technology to provide video chat and screen sharing between users. You can start a video call with another from the direct message page, and share your screen to collaborate on code or troubleshoot
 
 ## Getting started
