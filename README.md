@@ -24,10 +24,10 @@ To run Code Circle locally, you need to have Node.js and npm installed on your m
 5.  Create a `.env.local` file in the root directory with the following environment variables:
 
 ```
-REACT_APP_ABLY_API_KEY=<YOUR_ABLY_API_KEY>
-REACT_APP_FIREBASE_API_KEY=<YOUR_FIREBASE_API_KEY>
-REACT_APP_FIREBASE_AUTH_DOMAIN=<YOUR_FIREBASE_AUTH_DOMAIN>
-REACT_APP_FIREBASE_PROJECT_ID=<YOUR_FIREBASE_PROJECT_ID>
+ABLY_API_KEY=<YOUR_ABLY_API_KEY>
+FIREBASE_API_KEY=<YOUR_FIREBASE_API_KEY>
+FIREBASE_AUTH_DOMAIN=<YOUR_FIREBASE_AUTH_DOMAIN>
+FIREBASE_PROJECT_ID=<YOUR_FIREBASE_PROJECT_ID>
 ```
 
 6.  Start the development server: `npm run dev`
