@@ -182,7 +182,7 @@ export default function ProfilePagePostCard({ props, userName }) {
             <button onClick={handleCancelEditPost} className={styles.button}>
               Cancel Editing
             </button>
-          ) : (
+          ) : ( user === userName &&
             <button onClick={handleEditPost} className={styles.button}>
               Edit Post
             </button>
@@ -192,9 +192,9 @@ export default function ProfilePagePostCard({ props, userName }) {
               Update Post
             </button>
           ) : null}
-          <button onClick={handleDeletePost} className={styles.button}>
+          {(user === userName && <button onClick={handleDeletePost} className={styles.button}>
             Delete Post
-          </button>
+          </button>)}
         </div>
       </div>
     </div>
