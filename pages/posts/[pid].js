@@ -21,7 +21,6 @@ async function getPosts(db) {
   const postsList = postsSnapshot.docs.map((doc) => doc.data());
   return postsList;
 }
-
 export default function SinglePost() {
   checkLoggedIn();
   const [posts, setPosts] = useState([]);
@@ -53,6 +52,8 @@ export default function SinglePost() {
   const postToRender = posts.filter((post) => {
     return post.postId === pid;
   });
+  const dateObject = moment(postToRender[0]?.postTime);
+  const readableDate = dateObject.fromNow();
 
   return (
     <div className="flex flex-col items-center pt-[150px] pb-12">
@@ -103,9 +104,7 @@ export default function SinglePost() {
               <div className="font-bold">
                 in {postToRender[0]?.programmingLanguage}
               </div>
-              <div className={styles.time}>
-                {moment.unix(postToRender[0]?.postTime).format('HH:MM a')}
-              </div>
+              <div className={styles.time}>{readableDate}</div>
               <div className="text-2xl cursor-pointer w-fit">
                 <AiOutlineMail />
               </div>
