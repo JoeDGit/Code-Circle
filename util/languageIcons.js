@@ -4,12 +4,10 @@ import { FaCss3Alt } from 'react-icons/fa';
 import { FaPython } from 'react-icons/fa';
 import { FaJava } from 'react-icons/fa';
 import { FaPhp } from 'react-icons/fa';
-import { FaRuby } from 'react-icons/fa';
 import { FaSwift } from 'react-icons/fa';
 import { FaRust } from 'react-icons/fa';
 import { FaRProject } from 'react-icons/fa';
 import {
-  FaPerl,
   FaDatabase,
   FaApple,
   FaTerminal,
@@ -29,7 +27,6 @@ import { FaVuejs } from 'react-icons/fa';
 import { FaNodeJs } from 'react-icons/fa';
 import { FaAngular } from 'react-icons/fa';
 import { FaErlang } from 'react-icons/fa';
-import { FaClojure } from 'react-icons/fa';
 import { FaEmber } from 'react-icons/fa';
 import { DiFsharp } from 'react-icons/di';
 import {
@@ -45,7 +42,10 @@ import {
   SiFlask,
   SiRuby,
   SiApachegroovy,
+  SiHaskell,
+  SiClojure,
 } from 'react-icons/si';
+import { GiCamel } from 'react-icons/gi';
 
 const languages = {
   javascript: <FaJsSquare color="#f7df1e" />,
@@ -67,10 +67,10 @@ const languages = {
   cplus: <SiCplusplus color="#f34b7d" />,
   c: <SiC color="#a8b9cc" />,
   r: <FaRProject color="#276dc3" />,
-  perl: <FaPerl color="#0093B2" />,
+  perl: <GiCamel color="#0093B2" />,
   sql: <FaDatabase color="#F29111" />,
   objectivec: <FaApple color="#999999" />,
-  haskell: <FaLambda color="#5D4F85" />,
+  haskell: <SiHaskell color="#5D4F85" />,
   elixir: <FaHeart color="#6E4A7E" />,
   groovy: <SiApachegroovy color="#4298B8" />,
   shell: <FaTerminal color="#89e051" />,
@@ -100,16 +100,14 @@ const languages = {
   dotnet: <FaMicrosoft color="#5c2d91" />,
   react: <SiReact color="#61dafb" />,
   ember: <FaEmber color="#f23819" />,
-  clojure: <FaClojure color="#5881d8" />,
+  clojure: <SiClojure color="#5881d8" />,
   erlang: <FaErlang color="#a90533" />,
   fsharp: <DiFsharp color="#1b82c7" />,
   ocaml: <FaCode color="#3be133" />,
-  perl6: <FaPerl color="#000000" />,
   racket: <FaCode color="#960122" />,
   scheme: <FaCode color="#1e4aec" />,
   sml: <FaCode color="#dc3d31" />,
   bash: <FaTerminal color="#000000" />,
-  perl5: <FaCode color="#333" />,
   ksh: <FaTerminal color="#000000" />,
   zsh: <FaTerminal color="#000000" />,
   awk: <FaCode color="#77cc00" />,
