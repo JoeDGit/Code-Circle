@@ -23,7 +23,7 @@ export default function PostReplyForm({ pid, setReplies }) {
   function handleSubmit(e) {
     e.preventDefault();
 
-    postReply(postReplyInput, pid, user.displayName);
+    postReply(postReplyInput, pid, user.displayName, user.photoURL);
 
     setTimeout(() => {
       getReplies(db).then((response) => {
