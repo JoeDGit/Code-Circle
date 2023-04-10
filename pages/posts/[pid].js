@@ -22,19 +22,7 @@ import checkLoggedIn from '../../hooks/checkLoggedIn';
 import { useAuthContext } from '../../hooks/useAuthContext';
 import deleteAreply from '../../hooks/deleteAreply';
 
-export async function getStaticPaths() {
-  const postsCol = collection(db, 'posts');
-  const postsSnapshot = await getDocs(postsCol);
-  const postIds = postsSnapshot.docs.map((doc) => doc.id);
-
-  const paths = postIds.map((postId) => ({
-    params: { pid: postId },
-  }));
-
-  return { paths, fallback: false };
-}
-
-export async function getStaticProps({ params }) {
+export async function getServerSideProps({ params }) {
   const postDoc = doc(db, 'posts', params.pid);
   const postSnapshot = await getDoc(postDoc);
   const postData = postSnapshot.data();
