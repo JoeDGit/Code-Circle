@@ -1,6 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { useRouter } from 'next/router';
-import { collection, getDocs } from 'firebase/firestore';
+import {
+  collection,
+  getDocs,
+  doc,
+  getDoc,
+  query,
+  where,
+} from 'firebase/firestore';
 import { db } from '../../firebase/config';
 import PostReplyForm from '../../components/postReplyForm';
 import PostReplies from '../../components/PostReplies';
@@ -15,32 +22,35 @@ import checkLoggedIn from '../../hooks/checkLoggedIn';
 import { useAuthContext } from '../../hooks/useAuthContext';
 import deleteAreply from '../../hooks/deleteAreply';
 
-async function getPosts(db) {
+export async function getStaticPaths() {
   const postsCol = collection(db, 'posts');
   const postsSnapshot = await getDocs(postsCol);
-  const postsList = postsSnapshot.docs.map((doc) => doc.data());
-  return postsList;
+  const postIds = postsSnapshot.docs.map((doc) => doc.id);
+
+  const paths = postIds.map((postId) => ({
+    params: { pid: postId },
+  }));
+
+  return { paths, fallback: false };
 }
-export default function SinglePost() {
+
+export async function getStaticProps({ params }) {
+  const postDoc = doc(db, 'posts', params.pid);
+  const postSnapshot = await getDoc(postDoc);
+  const postData = postSnapshot.data();
+
+  const repliesCollection = collection(db, 'replies');
+  const q = query(repliesCollection, where('postId', '==', params.pid));
+  const repliesSnapshot = await getDocs(q);
+  const replies = repliesSnapshot.docs.map((doc) => doc.data());
+  return { props: { postData, replies } };
+}
+export default function SinglePost({ postData, replies }) {
   checkLoggedIn();
-  const [posts, setPosts] = useState([]);
-  const [replies, setReplies] = useState([]);
   const { user } = useAuthContext();
 
   const router = useRouter();
   const pid = router.query['pid'];
-
-  useEffect(() => {
-    getReplies().then((response) => {
-      setReplies(response);
-    });
-  }, []);
-
-  useEffect(() => {
-    getPosts(db).then((response) => {
-      setPosts(response);
-    });
-  }, []);
 
   const handleDeleteReply = (replyId) => {
     Promise.resolve(deleteAreply(replyId));
@@ -49,10 +59,7 @@ export default function SinglePost() {
     );
   };
 
-  const postToRender = posts.filter((post) => {
-    return post.postId === pid;
-  });
-  const dateObject = moment(postToRender[0]?.postTime);
+  const dateObject = moment(postData.postTime);
   const readableDate = dateObject.fromNow();
 
   return (
@@ -69,10 +76,10 @@ export default function SinglePost() {
       <div className="w-3/4 m-auto border border-[#eaeaea] rounded-[10px] p-5 mt-2 drop-shadow">
         <div className="flex flex-col md:gap-[15px] w-full items-start h-1/5">
           <div>
-            {postToRender[0]?.photoURL ? (
+            {postData.photoURL ? (
               /* eslint-disable-next-line @next/next/no-img-element */
               <img
-                src={postToRender[0]?.photoURL}
+                src={postData.photoURL}
                 alt="profile "
                 className="rounded-full w-[60px] h-[60px] md:w-[150px] md:h-[150px] cursor-pointer"
                 onClick={() => {
@@ -94,16 +101,14 @@ export default function SinglePost() {
             <div className="flex flex-col  md:mb-4 md:mt-0 md:ml-4">
               <div
                 onClick={() => {
-                  router.push(`/users/${postToRender[0]?.user}`);
+                  router.push(`/users/${postData.user}`);
                 }}
                 className="text-[#4f9cf9] font-bold text-xl cursor-pointer w-fit"
               >
-                @{postToRender[0]?.user}
+                @{postData.user}
               </div>
 
-              <div className="font-bold">
-                in {postToRender[0]?.programmingLanguage}
-              </div>
+              <div className="font-bold">in {postData.programmingLanguage}</div>
               <div className={styles.time}>{readableDate}</div>
               <div className="text-2xl cursor-pointer w-fit">
                 <AiOutlineMail />
@@ -113,25 +118,25 @@ export default function SinglePost() {
             <div className="flex flex-col h-full gap-8">
               <div>
                 <div className="text-3xl font-bold text-sans mb-5 mt-2">
-                  {postToRender[0]?.postTitle}
+                  {postData.postTitle}
                 </div>
                 <div className="text-lg font-sans mb-2.5 mt-5">
-                  {postToRender[0]?.projectDescription}
+                  {postData.projectDescription}
                 </div>
               </div>
               <div>
                 <div className="text-[14px]">
-                  Availability: {postToRender[0]?.weekDayAvailability}{' '}
-                  {postToRender[0]?.dailyAvailability}
+                  Availability: {postData.weekDayAvailability}{' '}
+                  {postData.dailyAvailability}
                 </div>
                 <div className="text-[14px]">
-                  Time zone: {postToRender[0]?.timeZone}
+                  Time zone: {postData.timeZone}
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <PostReplyForm pid={pid} setReplies={setReplies} />
+        <PostReplyForm pid={pid} />
         <PostReplies
           pid={pid}
           replies={replies}

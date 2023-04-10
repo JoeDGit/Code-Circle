@@ -18,19 +18,17 @@ export default function PostReplies({ pid, replies, handleDeleteReply }) {
   const { user } = useAuthContext();
   const router = useRouter();
 
-  const repliesToRender = replies?.filter((reply) => {
-    return reply.postId === pid;
-  });
+
 
   return (
     <div>
-      {repliesToRender?.length ? (
-        repliesToRender.map((reply) => (
+      {replies?.length ? (
+        replies.map((reply) => (
           <div key={reply.replyId} className="flex flex-col w-full pb-12">
             <div className="flex items-start gap-4 border border-[#eaeaea] p-5">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src={user.photoURL}
+                src={reply.avatarURL}
                 alt="profile"
                 className="rounded-full h-16 w-16 cursor-pointer"
                 onClick={() => router.push(`/users/${user?.displayName}`)}
