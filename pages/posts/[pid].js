@@ -66,7 +66,7 @@ export default function SinglePost({ postData, postReplies }) {
         <IoReturnUpBackSharp color={'white'} size={20} />
         <div className="text-white font-sans">Back to all posts</div>
       </div>
-      <div className="w-3/4 m-auto border border-[#eaeaea] rounded-[10px] p-5 mt-2 drop-shadow">
+      <div className="w-3/4 m-auto border border-[#eaeaea] rounded-[10px] p-5 mt-2">
         <div className="flex flex-col md:gap-[15px] w-full items-start h-1/5">
           <div>
             {postData.photoURL ? (
