@@ -1,19 +1,11 @@
-import { getDocs, collection, getFirestore } from "firebase/firestore";
+import { getDocs, collection, query, where } from 'firebase/firestore';
 
-import { db } from "../firebase/config";
+import { db } from '../firebase/config';
 
-export async function getReplies() {
-  const repliesCol = collection(db, "replies");
-
-  const repliesSnapshot = await getDocs(repliesCol);
-
-  const repliesList = repliesSnapshot.docs
-    .map((doc) => {
-      return {
-        ...doc.data(),
-        createdAt: new Date(doc._document.createTime.timestamp.seconds * 1000),
-      };
-    })
-    .sort((a, b) => b.createdAt - a.createdAt);
-  return repliesList;
+export async function getReplies(postId) {
+  const repliesCollection = collection(db, 'replies');
+  const q = query(repliesCollection, where('postId', '==', postId));
+  const repliesSnapshot = await getDocs(q);
+  const postReplies = repliesSnapshot.docs.map((doc) => doc.data());
+  return postReplies;
 }
