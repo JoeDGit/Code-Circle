@@ -41,7 +41,6 @@ export default function PostReplyForm({ pid, setReplies }) {
     <div className="flex flex-col pb-12 w-full ">
       <form onSubmit={handleSubmit} className={styles.form}>
         <textarea
-          autoFocus
           className="p-5 resize-none drop-shadow-md my-5 rounded-lg bg-[#ffffff] border-2 border-[#eaeaea]"
           onChange={onChangePostReply}
           value={postReplyInput}
