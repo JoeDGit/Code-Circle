@@ -70,7 +70,7 @@ export default function HomePagePostCard({ post, replyCountByPostId }) {
               <div>
                 <div
                   className="font-bold text-3xl mt-2.5 mb-1 cursor-pointer"
-                  onClickCapture={() => {
+                  onClick={() => {
                     router.push(`/posts/${post.postId}`);
                   }}
                 >
