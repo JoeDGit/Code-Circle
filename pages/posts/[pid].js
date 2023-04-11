@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useRouter } from 'next/router';
 import {
   collection,
@@ -27,13 +27,13 @@ export async function getServerSideProps({ params }) {
   const postSnapshot = await getDoc(postDoc);
   const postData = postSnapshot.data();
 
-  const repliesCollection = collection(db, 'replies');
-  const q = query(repliesCollection, where('postId', '==', params.pid));
-  const repliesSnapshot = await getDocs(q);
-  const replies = repliesSnapshot.docs.map((doc) => doc.data());
-  return { props: { postData, replies } };
+  const postReplies = await getReplies(params.pid);
+  return { props: { postData, postReplies } };
 }
-export default function SinglePost({ postData, replies }) {
+
+export default function SinglePost({ postData, postReplies }) {
+  const [replies, setReplies] = useState(postReplies);
+  const [isDeletingReply, setIsDeletingReply] = useState(false);
   checkLoggedIn();
   const { user } = useAuthContext();
 
@@ -41,10 +41,15 @@ export default function SinglePost({ postData, replies }) {
   const pid = router.query['pid'];
 
   const handleDeleteReply = (replyId) => {
-    Promise.resolve(deleteAreply(replyId));
-    setReplies((prevReplies) =>
-      prevReplies.filter((reply) => reply.replyId !== replyId)
-    );
+    setIsDeletingReply(true);
+    Promise.resolve(deleteAreply(replyId))
+      .then(() => {
+        setReplies((prevReplies) =>
+          prevReplies.filter((reply) => reply.replyId !== replyId)
+        );
+        setIsDeletingReply(false);
+      })
+      .catch(() => {});
   };
 
   const dateObject = moment(postData.postTime);
@@ -124,11 +129,12 @@ export default function SinglePost({ postData, replies }) {
             </div>
           </div>
         </div>
-        <PostReplyForm pid={pid} />
+        <PostReplyForm pid={pid} setReplies={setReplies} />
         <PostReplies
           pid={pid}
           replies={replies}
           handleDeleteReply={handleDeleteReply}
+          isDeletingReply={isDeletingReply}
         />
       </div>
     </div>
