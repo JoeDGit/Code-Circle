@@ -1,14 +1,5 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
-import {
-  collection,
-  getDocs,
-  doc,
-  getDoc,
-  query,
-  where,
-} from 'firebase/firestore';
-import { db } from '../../firebase/config';
 import PostReplyForm from '../../components/postReplyForm';
 import PostReplies from '../../components/PostReplies';
 import { getReplies } from '../../hooks/getReplies';
@@ -21,24 +12,36 @@ import { IoReturnUpBackSharp } from 'react-icons/io5';
 import checkLoggedIn from '../../hooks/checkLoggedIn';
 import { useAuthContext } from '../../hooks/useAuthContext';
 import deleteAreply from '../../hooks/deleteAreply';
+import getSinglePost from '../../hooks/getSinglePost';
+import Loader from '../../components/Loader.jsx';
 
-export async function getServerSideProps({ params }) {
-  const postDoc = doc(db, 'posts', params.pid);
-  const postSnapshot = await getDoc(postDoc);
-  const postData = postSnapshot.data();
-
-  const postReplies = await getReplies(params.pid);
-  return { props: { postData, postReplies } };
-}
-
-export default function SinglePost({ postData, postReplies }) {
-  const [replies, setReplies] = useState(postReplies);
+export default function SinglePost() {
+  const [postData, setPostData] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [replies, setReplies] = useState([]);
   const [isDeletingReply, setIsDeletingReply] = useState(false);
   checkLoggedIn();
   const { user } = useAuthContext();
 
   const router = useRouter();
-  const pid = router.query['pid'];
+  const postId = router.query.pid;
+
+  useEffect(() => {
+    setIsLoading(true);
+    const fetchPostData = async () => {
+      try {
+        const singlePostData = await getSinglePost(postId);
+        const postReplies = await getReplies(postId);
+        setPostData(singlePostData);
+        setReplies(postReplies);
+      } catch (error) {
+        console.log(error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    fetchPostData();
+  }, [postId]);
 
   const handleDeleteReply = (replyId) => {
     setIsDeletingReply(true);
@@ -54,6 +57,14 @@ export default function SinglePost({ postData, postReplies }) {
 
   const dateObject = moment(postData.postTime);
   const readableDate = dateObject.fromNow();
+
+  if (isLoading) {
+    return (
+      <div className="flex justify-center mt-40">
+        <Loader />
+      </div>
+    );
+  }
 
   return (
     <div className="flex flex-col items-center pt-[150px] pb-12">
@@ -129,9 +140,9 @@ export default function SinglePost({ postData, postReplies }) {
             </div>
           </div>
         </div>
-        <PostReplyForm pid={pid} setReplies={setReplies} />
+        <PostReplyForm postId={postId} setReplies={setReplies} />
         <PostReplies
-          pid={pid}
+          postId={postId}
           replies={replies}
           handleDeleteReply={handleDeleteReply}
           isDeletingReply={isDeletingReply}
