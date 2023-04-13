@@ -15,7 +15,7 @@ const buttonVariants = {
   },
 };
 
-export default function PostReplyForm({ pid, setReplies }) {
+export default function PostReplyForm({ postId, setReplies }) {
   const [postReplyInput, setPostReplyInput] = useState('');
 
   const { user } = useAuthContext();
@@ -23,10 +23,10 @@ export default function PostReplyForm({ pid, setReplies }) {
   function handleSubmit(e) {
     e.preventDefault();
 
-    postReply(postReplyInput, pid, user.displayName, user.photoURL);
+    postReply(postReplyInput, postId, user.displayName, user.photoURL);
 
     setTimeout(() => {
-      getReplies(pid).then((response) => {
+      getReplies(postId).then((response) => {
         setPostReplyInput('');
         setReplies(response);
       });

@@ -14,7 +14,7 @@ const buttonVariants = {
   },
 };
 
-export default function PostReplies({ pid, replies, handleDeleteReply }) {
+export default function PostReplies({ postId, replies, handleDeleteReply }) {
   const { user } = useAuthContext();
   const router = useRouter();
 
