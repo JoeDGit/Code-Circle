@@ -31,7 +31,7 @@ export default function HomePagePostCard({ post, replyCountByPostId }) {
                 alt="profile"
                 className="rounded-full w-[60px] h-[60px]"
                 onClick={() => {
-                  router.push(`/users/${user?.displayName}`);
+                  router.push(`/users/${post.user}`);
                 }}
               />
             ) : (
@@ -40,7 +40,7 @@ export default function HomePagePostCard({ post, replyCountByPostId }) {
                 alt="profile"
                 className="rounded-full w-[60px] h-[60px]"
                 onClick={() => {
-                  router.push(`/users/${user?.displayName}`);
+                  router.push(`/users/${post.user}`);
                 }}
               />
             )}
